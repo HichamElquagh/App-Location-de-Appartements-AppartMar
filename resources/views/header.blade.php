@@ -15,4 +15,6 @@
         <link rel="stylesheet" href="{{asset('css\landing.css')}}">
         <link rel="stylesheet" href="{{asset('css\nav.css')}}">
         <link rel="stylesheet" href="{{asset('css\footer.css')}}">
+        <link rel="stylesheet" href="{{asset('css\contact.css')}}">
+        <link rel="stylesheet" href="{{asset('css\properties.css')}}">
     </head>

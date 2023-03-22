@@ -1,6 +1,6 @@
 @include('header')
 <footer
-class="my-footer d-print-none text-center mt-5 text-lg-start text-dark"
+class="my-footer d-print-none text-center mt-5 text-lg-start text-dark  "
 >
 <div class="m-0">
 <!-- Section: Links --> 
