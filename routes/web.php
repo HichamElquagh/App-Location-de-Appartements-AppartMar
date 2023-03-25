@@ -25,6 +25,9 @@ Route::get('/properties', function () {
 Route::get('/a_propos', function () {
     return view('a_propos');
 });
+Route::get('/dash', function () {
+    return view('mydashboard');
+});
 
 
 Route::middleware([
@@ -33,6 +36,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('mydashboard');
     })->name('dashboard');
 });
