@@ -60,6 +60,7 @@
                         <i class="fas fa-align-left"></i>
                         <span>Go Sidebar</span>
                     </button>
+                      
 
                     <div class="col-12">
                         <div class="bg-light rounded  h-100 p-4">

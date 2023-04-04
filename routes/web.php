@@ -13,14 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('landing');
 });
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/properties', function () {
-    return view('properties');
+Route::get('/All.properties', function () {
+    return view('All_Properties');
 });
 Route::get('/a_propos', function () {
     return view('a_propos');
@@ -28,6 +29,12 @@ Route::get('/a_propos', function () {
 Route::get('/dash', function () {
     return view('mydashboard');
 });
+Route::get('/properties', function () {
+    return view('properties');
+});
+
+
+Route::post('/appartement', [AppartementController::class, 'store'])->name('appartement.store');
 
 
 Route::middleware([
@@ -35,7 +42,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('mydashboard');
-    })->name('dashboard');
+    Route::get('/landing', function () {
+        return view('landing');
+    })->name('landing');
 });
+Route::get('/dashboard', function () {
+    return view('mydashboard');
+})->name('dashboard');

@@ -1,107 +1,29 @@
 @include('header')
-<body class="">
-    @include('nav')
-  
-   <div class=" bg-properties">
-    <div class="  container"> 
-                  <div class="d-flex justify-content-start "> 
-                    <div> <p class="properties">list of properties</p></div>
-                   <!-- <div class="d-flex algin-items-center"><button class="btn-view">View All Properties</button></div> -->
-                  </div>
-
-
-
-       <div class="row mx-auto ">
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>   
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-     
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>   
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-     </div>
-  </div>
-  </div>
+@include('nav')
+<body>
     
+    <div class="container d-flex justify-content-center align-items-center ">
+      <div class="row align-items-center justify-content-between " style="height: 40rem;">
+        <div class="col-md-6">
+          <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="Appartement">
+        </div>
+        <div class="col-md-6 p-5 ">
+          <h1>Nom de l'appartement</h1>
+          <p>Description de l'appartement</p>
+          <h2>Détails de l'appartement</h2>
+          <ul>
+            <li>Nombre de chambres: 2</li>
+            <li>Nombre de salles de bains: 1</li>
+            <li>Superficie: 60 m²</li>
+            <li>Emplacement: Ville</li>
+          </ul>
+          <h2>Prix</h2>
+          <p>Le loyer mensuel est de 1000€.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+        
+    </div>
 
-
-
-    @include('footer')
 </body>
-</html>

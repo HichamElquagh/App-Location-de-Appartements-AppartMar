@@ -105,10 +105,10 @@ class="my-footer d-print-none text-center mt-5 text-lg-start text-dark  "
     Get the app 
   </h6>
   <p>
-    <span class="text-dark">Go2Trip for android</span>
+    <span class="text-dark">AppartMar for android</span>
   </p>
   <p>
-    <span class="text-dark">Go2Trip for ios</span>
+    <span class="text-dark">AppartMar for ios</span>
   </p>
   <p>
     <span class="text-dark">Mobile site</span>
@@ -129,7 +129,7 @@ class="my-footer d-print-none text-center mt-5 text-lg-start text-dark  "
 <div class="col-md-7 col-lg-8 text-center text-md-start">
   <!-- Copyright -->
   <div class="p-3">
-    © 2023 Copyright Go2Trip
+    © 2023 Copyright AppartMar
   </div>
   <!-- Copyright -->
 </div>

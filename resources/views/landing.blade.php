@@ -1,10 +1,11 @@
+@include('nav')
 <body class="">
- @include('nav')
    <!-- <div class="container ">
    <img src="{{asset('img/architecture-morocco-style.jpg')}}"   alt="landing-image">
    </div> -->
-   <div class="container-fluid bg-image">
-    <div class="d-md-flex f-sm-column  justify-content-md-around  align-items-center  h-100">
+   <div class="bg-image">
+    <div class="d-md-flex f-sm-column  justify-content-md-around  align-items-center  h-100" style="position: inherit;
+    z-index: 1;">
       <div>
         <p class="description-acceuil">The most affortable place </p>
         <p class="description-acceuil">to stay in Morrocan dreams </p>

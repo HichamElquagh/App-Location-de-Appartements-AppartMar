@@ -11,7 +11,7 @@
         <div class="d-lg-flex d-md-block justify-content-around w-50 ">
         <a class=" items-navbar nav-link" aria-current="page" href="/">Home</a>
         <a class="items-navbar nav-link" href="">Filter</a>
-        <a class="items-navbar nav-link" href="properties">Properties</a>
+        <a class="items-navbar nav-link" href="All.properties">Properties</a>
         <a class="items-navbar nav-link" href="contact">Contact</a>
         <a class="items-navbar nav-link" href="a_propos">A propos</a>
         </div>

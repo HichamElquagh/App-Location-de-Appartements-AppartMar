@@ -27,17 +27,17 @@
       </div>
     </section><!-- End Intro Single-->
 
-    <section class="contact my-5 ">
+    <section class="contact my-5">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div class="contact-map box">
               <div id="map" class="contact-map">
-              <img class=" contact-img" src="{{asset('/img/contact-us-communication-support-service-assistance-concept.jpg')}}" alt="" srcset="">
+              <!-- <img class="contact-img" src="{{asset('/img/contact-us-communication-support-service-assistance-concept.jpg')}}" alt="" srcset=""> -->
               </div>
             </div>
           </div>
-          <div class="col-sm-12 section-t8">
+          <div class="col-sm-12 section-t8 my-5">
             <div class="row">
               <div class="col-md-7">
                 <form action="forms/contact.php" method="post" role="form" class="php-email-form">
@@ -71,12 +71,12 @@
                     </div>
 
                     <div class="col-md-12 text-center">
-                      <button type="submit" class="btn btn-a">Send Message</button>
+                      <button type="submit" class="btn btn-success">Send Message</button>
                     </div>
                   </div>
                 </form>
               </div>
-              <div class="col-md-5 section-md-t3">
+              <div class="col-md-5 d-sm-flex flex-column align-items-sm-center mt-5">
                 <div class="icon-box section-b2">
                   <div class="icon-box-icon">
                     <span class="bi bi-envelope"></span>
@@ -124,22 +124,22 @@
                         <ul class="list-inline">
                           <li class="list-inline-item">
                             <a href="#" class="link-one">
-                              <i class="bi bi-facebook" aria-hidden="true"></i>
+                            <i class=" fs-4 fa-brands fa-facebook"></i>
                             </a>
                           </li>
                           <li class="list-inline-item">
                             <a href="#" class="link-one">
-                              <i class="bi bi-twitter" aria-hidden="true"></i>
+                            <i class=" fs-4 fa-brands fa-twitter"></i>
                             </a>
                           </li>
                           <li class="list-inline-item">
                             <a href="#" class="link-one">
-                              <i class="bi bi-instagram" aria-hidden="true"></i>
+                            <i class=" fs-4 fa-brands fa-instagram"></i>
                             </a>
                           </li>
                           <li class="list-inline-item">
                             <a href="#" class="link-one">
-                              <i class="bi bi-linkedin" aria-hidden="true"></i>
+                            <i class=" fs-4 fa-brands fa-linkedin"></i>
                             </a>
                           </li>
                         </ul>
