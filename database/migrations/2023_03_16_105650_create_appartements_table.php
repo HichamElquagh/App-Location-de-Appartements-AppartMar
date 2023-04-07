@@ -21,14 +21,12 @@ return new class extends Migration
             $table->foreign('localisation_id')->references('id')->on('localisations');
             $table->unsignedBigInteger('personne_id');
             $table->foreign('personne_id')->references('id')->on('people');
-            $table->unsignedBigInteger('image_id');
-            $table->foreign('image_id')->references('id')->on('images');
             $table->text('description');
             $table->string('space');
             $table->integer('no_chambre');
             $table->float('prix');
             $table->date('date');
-            $table->string('status')->default('NonAlloue');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class StoreAppartementRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,17 @@ class StoreAppartementRequest extends FormRequest
     {
         return [
             //
+            'localisation'=>'required',
+            'city'=>'required',
+            'description'=>'required',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'prix'=>'required',
+            'caracteristique'=>'required',
+            'nombrePersonne'=>'required',
+            'nombreChambre'=>'required',
+            'espaces'=>'required',
+            'date'=>'required'
+            
         ];
     }
 }

@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ElementAppartement;
 
 use App\Models\Person;
+use App\Models\Characteristic;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Citie;
 
 class PersonController extends Controller
 {
@@ -15,6 +18,14 @@ class PersonController extends Controller
     public function index()
     {
         //
+        $allcities = Citie::all();
+        $allcharacteristic = Characteristic::get();
+        $NombrePerson = Person::get();
+        return view('mydashboard', [
+            'persons' => $NombrePerson,
+            'characteristics' => $allcharacteristic,
+            'cities'=>$allcities
+        ]);
     }
 
     /**

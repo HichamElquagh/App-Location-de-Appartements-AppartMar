@@ -49,6 +49,17 @@ a:focus {
     margin: 40px 0;
 }
 
+/* stile rechreche city */
+
+    .dropdown-menu{
+        width: 100% !important;
+        min-width: unset !important;
+    }
+    .bootstrap-select{
+        width: 100% !important;
+
+    }
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

@@ -1,12 +1,12 @@
   @include('header')
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-nav top-fixed ">
+ <nav class="navbar navbar-expand-lg navbar-light bg-nav top-fixed ">
   <div class="container-fluid ">
     <a class="AppartMar mx-4 " href="#">AppartMar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div class="navbar-nav w-100 justify-content-around">
         <div class="d-lg-flex d-md-block justify-content-around w-50 ">
         <a class=" items-navbar nav-link" aria-current="page" href="/">Home</a>
@@ -30,6 +30,7 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> 
+
 
  

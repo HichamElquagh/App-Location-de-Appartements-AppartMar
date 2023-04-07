@@ -203,53 +203,75 @@
       </div>
       <div class="modal-body">
         <form action="{{route('appartement.store')}}" method="POST" id="form" enctype="multipart/form-data">
+            @csrf
+          <label for="recipient-name" class="col-form-label" for="ville">Sélectionnez votre ville</label>
+          <div class="form-group w-100">
+            <select class="selectpicker w-100" name="city" data-live-search="true">
+                <option selected>Sélectionnez </option>  
+                @foreach($cities as $city)
+              <option value="{{$city->id}}">{{$city->city}}</option>  
+              @endforeach; 
+            </select>
+        </div> 
+        
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Localisation</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Adresse</label>
+            <input type="text" class="form-control" name="localisation" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Description </label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control" name="description" id="message-text"></textarea>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Image</label>
-            <input type="file" class="form-control" id="recipient-name">
+            <input type="file" class="form-control" name="images[]" multiple id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Prix</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="number" class="form-control" name="prix" id="recipient-name" step="0.01" min="0">
           </div>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Caracteristique</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-
-        </select>
-        <select class="form-select" aria-label="Default select example">
+         
+        <label for="recipient-name" class="col-form-label" for="tags">Sélectionnez des Caracteristique:</label>
+            <select class="form-select" aria-label="Default select example" name="caracteristique[]" id="tags" multiple>
+                @foreach($characteristics as $characteristic)
+                <option value="{{$characteristic->id}}">{{$characteristic->name}}</option>  
+                @endforeach; 
+            </select>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nombre de Chambre</label>
+                <input type="number" class="form-control" name="nombreChambre" id="recipient-name">
+              </div>
+            <label for="recipient-name" class="col-form-label" >Nombre de Personne</label>
+        <select class="form-select" aria-label="Default select example" name="nombrePersonne">
             <option selected>Nombre de Personne</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            @foreach($persons as $person)
+            <option value="{{$person->id}}">{{$person->person}}</option>  
+            @endforeach;  
         </select>
-        <div class="mb-3">
+                <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Espaces</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" name="espaces" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Date</label>
-            <input type="date" class="form-control" id="recipient-name">
+            <input type="date" class="form-control" name="date" id="recipient-name">
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="" class="btn btn-primary" name="save" >Save</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{{-- rechrche citei--}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>       
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <!-- side barr  -->
     <script>$(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {

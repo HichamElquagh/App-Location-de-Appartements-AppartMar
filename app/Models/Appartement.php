@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appartement extends Model
 {
+  
+
+  public const Disponible = 'Disponible';
+  public const Loue = 'Loué';
+
+
     use HasFactory;
     
     protected $fillable =[
@@ -24,8 +30,9 @@ class Appartement extends Model
       'status',
     ];
 
-    protected $casts =[
-        'status' => AppartementStatus::class
-    ];
+   
+    // protected $casts = [
+    //   'status' => AppartementStatus::class
+    //   ];
     
 }

@@ -16,6 +16,9 @@ class CharacteristicController extends Controller
     public function index()
     {
         //
+       
+      
+
     }
 
     /**

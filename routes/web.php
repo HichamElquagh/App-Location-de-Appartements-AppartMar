@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Appartement\AppartementController;
+use App\Http\Controllers\ElementAppartement\PersonController;
+use App\Http\Controllers\ElementAppartement\CharacteristicController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +37,10 @@ Route::get('/properties', function () {
 });
 
 
-Route::post('/appartement', [AppartementController::class, 'store'])->name('appartement.store');
 
+Route::controller(AppartementController::class)->group(function(){
+    Route::post('/appartement','store')->name('appartement.store');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -46,6 +51,9 @@ Route::middleware([
         return view('landing');
     })->name('landing');
 });
-Route::get('/dashboard', function () {
-    return view('mydashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('mydashboard');
+// })->name('dashboard');
+Route::controller(PersonController::class)->group(function(){
+    Route::get('/dashboard','index')->name('dashboard');
+});
