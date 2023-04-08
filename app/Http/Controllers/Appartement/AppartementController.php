@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Appartement;
 use App\Models\Appartement;
 use App\Models\Image;
 use App\Models\Localisation;
+use App\Models\Person;
+use App\Models\Characteristic;
+use App\Models\Citie;
 use App\Http\Requests\StoreAppartementRequest;
 use App\Http\Requests\UpdateAppartementRequest;
 use App\Http\Controllers\Controller;
@@ -21,6 +24,18 @@ class AppartementController extends Controller
     public function index()
     {
         //
+        $allcities = Citie::all();
+        $allcharacteristic = Characteristic::get();
+        $NombrePerson = Person::get();
+        $allapartemnt = Appartement::get();
+        return view('mydashboard', [
+            'persons' => $NombrePerson,
+            'characteristics' => $allcharacteristic,
+            'cities'=>$allcities,
+            'appartements'=>$allapartemnt
+        ]);
+        
+        // return $allapartemnt;
     }
 
     /**
@@ -42,43 +57,60 @@ class AppartementController extends Controller
     public function store(StoreAppartementRequest $request)
     {
         //
-        return $request;
-            $userId= Auth()->user()->id;
-
-        $status = Appartement::Disponible;
-
+            $userId = Auth()->user()->id;
+            $status = Appartement::Disponible;
         
-        foreach($request->images as $image)
-        {
-            $filename  = time() . '.' .  $image->getClientOriginalExtension();
-            $image->storeAs('public/images',$filename);
+            $newAppartement = Appartement::create([
+                'user_id' => $userId,
+                'personne_id' => $request->nombrePersonne,
+                'description' => $request->description,
+                'space' => $request->espaces,
+                'no_chambre' => $request->nombreChambre,
+                'prix' => $request->prix,
+                'date' => $request->date,
+                'status' => $status, 
+            ]);
+            $id = $newAppartement->id;
+            $images = [];
         
-            $images[] = $filename;
-        }        
-        Appartement::create([
-            'user_id'=>$userId,
-            'localisation_id'=>$request->localisation,
-            'personne_id'=>$request->nombrePersonne,
-            'description'=>$request->description,
-            'space'=>$request->espaces,
-            'no_chambre'=>$request->nombrePersonne,
-            'prix'=>$request->prix,
-            'date'=>$request->date,
-            'status'=>$status, 
-        ]);
-
-        Image::create([
-            'appartement_id'=>$request->id,
-            'image'=>$images,
-        ]);
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $filename = time() . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('public/images', $filename);
+                    Image::insert([
+                        'appartement_id' => $id,
+                        'image' => $filename,
+                    ]);
+                }
+            }
+            
         
-
+            // $id = $newAppartement->id;
+        
+            // foreach ($images as $image) { 
+            //     Image::insert([
+            //         'appartement_id' => $id,
+            //         'image' => $image,
+            //     ]);
+            // }
+     
+       
         Localisation::create([
+            'appartement_id'=>$id,
             'localisation'=>$request->localisation,
             'city_id'=>$request->city,
         ]);
 
+
+
+      $characteristiques = $request->input('caracteristique'); 
+      $newAppartement->characteristics()->attach($characteristiques);
+
+    return redirect()->route('index');
         }
+
+
+        
     
 
         
@@ -91,9 +123,11 @@ class AppartementController extends Controller
      * @param  \App\Models\Appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function show(Appartement $appartement)
+    public function show()
     {
         //
+       
+
     }
 
     /**

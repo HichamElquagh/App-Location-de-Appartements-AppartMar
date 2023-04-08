@@ -16,4 +16,8 @@ class Image extends Model
         'image',
 
     ];
+
+    public function Appartemnt(){
+        return $this->belongsTo(Appartement::class);
+    }
 }

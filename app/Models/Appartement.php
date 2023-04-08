@@ -18,9 +18,7 @@ class Appartement extends Model
     protected $fillable =[
       'id',
       'user_id',
-      'localisation_id',
-      'personnes_id',
-      'image_id',
+      'personne_id',
       'description',
       'space',
       'caracteristique_id',
@@ -35,4 +33,11 @@ class Appartement extends Model
     //   'status' => AppartementStatus::class
     //   ];
     
+
+    public function characteristics(){
+      return $this->belongsToMany(Characteristic::class,'appartement_characteristics');
+    }
+    public function images(){
+      return $this->hasMany(Image::class);
+    }
 }

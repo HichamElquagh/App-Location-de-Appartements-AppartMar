@@ -66,18 +66,19 @@
                                             </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($appartements as $appartement)
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>jhon@email.com</td>
+                                            <td><img src="" alt="" srcset=""></td>
+                                            <td></td>
+                                            <td>{{$appartement->description}}</td>
                                             <td>USA</td>
                                             <td>123</td>
                                             <td>Member</td>
                                             <td>Member</td>
                                             <td>Member</td> 
                                         </tr>
-                                      
+                                      @endforeach;
                                     </tbody>
                                 </table>
                             </div>
@@ -268,10 +269,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 {{-- rechrche citei--}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>       
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> --}}
     <!-- side barr  -->
     <script>$(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {

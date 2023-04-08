@@ -10,7 +10,8 @@ class Localisation extends Model
     use HasFactory;
 
     protected $fillable =[
-     'localisation',
-     'city_id',
+    'appartement_id',
+    'localisation',
+    'city_id',
     ]; 
 }

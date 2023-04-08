@@ -18,14 +18,14 @@ class PersonController extends Controller
     public function index()
     {
         //
-        $allcities = Citie::all();
-        $allcharacteristic = Characteristic::get();
-        $NombrePerson = Person::get();
-        return view('mydashboard', [
-            'persons' => $NombrePerson,
-            'characteristics' => $allcharacteristic,
-            'cities'=>$allcities
-        ]);
+    //     $allcities = Citie::all();
+    //     $allcharacteristic = Characteristic::get();
+    //     $NombrePerson = Person::get();
+    //     return view('mydashboard', [
+    //         'persons' => $NombrePerson,
+    //         'characteristics' => $allcharacteristic,
+    //         'cities'=>$allcities,
+    //     ]);
     }
 
     /**

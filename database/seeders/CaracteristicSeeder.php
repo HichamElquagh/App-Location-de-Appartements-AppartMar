@@ -16,13 +16,15 @@ class CaracteristicSeeder extends Seeder
     public function run()
     {
         //
-        Characteristic::create(['name'=>'Vue sur le jardin']);
-        Characteristic::create(['name'=>'Climatisation']);
-        Characteristic::create(['name'=>'Parking gratuit']);
-        Characteristic::create(['name'=>'Connexion Wi-Fi gratuite']);
-        Characteristic::create(['name'=>'Baignoire']);
-        Characteristic::create(['name'=>'Terrasse']);
-        Characteristic::create(['name'=>'Piscine extérieure']);
-        Characteristic::create(['name'=>'Front de mer']);
+        Characteristic::insert([
+            ['name'=>'Vue sur le jardin'],
+            ['name'=>'Climatisation'],
+            ['name'=>'Parking gratuit'],
+            ['name'=>'Connexion Wi-Fi gratuite'],
+            ['name'=>'Baignoire'],
+            ['name'=>'Terrasse'],
+            ['name'=>'Piscine extérieure'],
+            ['name'=>'Front de mer'],
+        ]);
     }
 }

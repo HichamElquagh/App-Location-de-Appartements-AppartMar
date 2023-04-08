@@ -15,7 +15,20 @@ use App\Http\Controllers\ElementAppartement\CharacteristicController ;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/landing', function () {
+        return view('landing');
+    })->name('landing');
+});
 
+
+Route::get('/dashboard', function () {
+    return view('mydashboard');
+})->name('dashboard');
 
 Route::get('/', function () {
     return view('landing');
@@ -37,23 +50,9 @@ Route::get('/properties', function () {
 });
 
 
-
 Route::controller(AppartementController::class)->group(function(){
     Route::post('/appartement','store')->name('appartement.store');
+    Route::get('/','index')->name('index');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/landing', function () {
-        return view('landing');
-    })->name('landing');
-});
-// Route::get('/dashboard', function () {
-//     return view('mydashboard');
-// })->name('dashboard');
-Route::controller(PersonController::class)->group(function(){
-    Route::get('/dashboard','index')->name('dashboard');
-});
+

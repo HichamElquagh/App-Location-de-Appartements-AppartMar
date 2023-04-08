@@ -13,4 +13,8 @@ class Characteristic extends Model
         'id',
         'name'
     ];
+
+    public function Appartements(){
+        return $this->belongsToMany(Appartement::class ,'appartement_characteristics');
+    }
 }
