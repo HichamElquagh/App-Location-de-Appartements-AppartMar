@@ -1,7 +1,7 @@
 
+@include('header')
 @include('nav')
 <body>
-    
     <div class="container d-flex justify-content-center align-items-center ">
       <div class="row align-items-center justify-content-between " style="height: 40rem;">
         <div class="col-md-6">

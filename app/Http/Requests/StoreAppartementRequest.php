@@ -26,6 +26,7 @@ class StoreAppartementRequest extends FormRequest
         return [
             //
             'localisation'=>'required',
+            'name_appartement'=>'required',
             'city'=>'required',
             'description'=>'required',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg',

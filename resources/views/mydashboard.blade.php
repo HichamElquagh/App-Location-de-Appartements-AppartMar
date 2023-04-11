@@ -39,7 +39,7 @@
                                         </div>
                                         <p class="mt-3 mb-0 text-muted text-sm">
                                           <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
-                                          <span class="text-nowrap">Since last month</span>
+                                          {{-- <span class="text-nowrap">Since last month</span> --}}
                                         </p>
                                       </div>
                                     </div>
@@ -59,8 +59,8 @@
                                           </div>
                                         </div>
                                         <p class="mt-3 mb-0 text-muted text-sm">
-                                          <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                                          <span class="text-nowrap">Since last week</span>
+                                          {{-- <span class="text-danger mr-2"> 3.48%</span>
+                                          <span class="text-nowrap">Since last week</span> --}}
                                         </p>
                                       </div>
                                     </div>
@@ -80,8 +80,8 @@
                                           </div>
                                         </div>
                                         <p class="mt-3 mb-0 text-muted text-sm">
-                                          <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                          <span class="text-nowrap">Since yesterday</span>
+                                          {{-- <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                                          <span class="text-nowrap">Since yesterday</span> --}}
                                         </p>
                                       </div>
                                     </div>
@@ -101,8 +101,8 @@
                                           </div>
                                         </div>
                                         <p class="mt-3 mb-0 text-muted text-sm">
-                                          <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                                          <span class="text-nowrap">Since last month</span>
+                                          {{-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                          <span class="text-nowrap">Since last month</span> --}}
                                         </p>
                                       </div>
                                     </div>
@@ -136,6 +136,8 @@
                                             <th scope="col">Espaces</th>
                                             <th scope="col">Caracteristique</th>
                                             <th scope="col">Date</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
                                             </tr>
                                     </thead>
                                     <tbody>
@@ -146,8 +148,8 @@
                                             <td> <img src="{{ asset('storage/image/'.$image->image) }}" height="50" width="50"  alt=""></td>
                                             @endforeach
                                             <td>{{$appartement->status}}</td>
-                                            <td></td>
-                                            <td>Member</td> 
+                                            <td>{{$appartement->localisation->localisation}}</td>
+                                            <td>{{$appartement->localisation->city->name}}</td> 
                                             <td>{{$appartement->description}}</td>
                                             <td>Member</td> 
                                             <td>{{$appartement->prix}}</td>
@@ -174,6 +176,10 @@
                                                 </div>
                                             </div></td>
                                             <td>{{$appartement->date}}</td>
+                                            <form action="">
+                                            <td><button type="submit" class="" ><i class="fa-solid fa-pen-to-square"></i></button></td>
+                                            <td><button type="submit" class="" ><i class="fa-solid fa-trash"></i></button></td>
+                                          </form>
                                         </tr>
                                       @endforeach;
                                     </tbody>
@@ -198,7 +204,10 @@
       <div class="modal-body">
         <form action="{{route('appartement.store')}}" method="POST" id="form" enctype="multipart/form-data">
             @csrf
-              
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nom d'appartement</label>
+              <input type="text" class="form-control" name="name_appartement" id="recipient-name">
+            </div>
             <label for="recipient-name" class="col-form-label" >choisir votre Ville</label>
         <select class="form-select" aria-label="Default select example" name="city">
             @foreach($cities as $city)

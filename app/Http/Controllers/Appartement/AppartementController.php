@@ -68,6 +68,7 @@ class AppartementController extends Controller
             $newAppartement = Appartement::create([
                 'user_id' => $userId,
                 'personne_id' => $request->nombrePersonne,
+                'name'=>$request->name_appartement,
                 'description' => $request->description,
                 'space' => $request->espaces,
                 'no_chambre' => $request->nombreChambre,
@@ -116,8 +117,7 @@ class AppartementController extends Controller
     
         }
 
-
-        
+   
     
 
         

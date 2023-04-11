@@ -13,4 +13,9 @@ class Person extends Model
         'id',
         'person'
     ];
+
+    public function appartement(){
+        return $this->hasOne(Appartement::class);
+
+    }
 }

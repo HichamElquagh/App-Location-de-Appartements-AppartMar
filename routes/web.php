@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Appartement\AppartementController;
+use App\Http\Controllers\Appartement\HomeController;
 use App\Http\Controllers\ElementAppartement\PersonController;
 use App\Http\Controllers\ElementAppartement\CharacteristicController ;
 use App\Http\Controllers\ElementAppartement\ReservationController;
@@ -28,9 +29,9 @@ Route::get('/', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/All.properties', function () {
-    return view('All_Properties');
-});
+// Route::get('/All.properties', function () {
+//     return view('All_Properties');
+// });
 Route::get('/a_propos', function () {
     return view('a_propos');
 });
@@ -64,6 +65,9 @@ Route::controller(ReservationController::class)->group(function(){
 Route::controller(CharacteristicController::class)->group(function(){
     Route::post('/characteristics','store')->name('characteristic.store');
     Route::get('/characteristics','index')->name('characteristic.index');
+});
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/allproperties','index')->name('allproperties.index');
 });
 
 

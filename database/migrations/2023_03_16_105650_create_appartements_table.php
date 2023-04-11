@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('personne_id');
             $table->foreign('personne_id')->references('id')->on('people');
+            $table->text('name');
             $table->text('description');
             $table->string('space');
             $table->integer('no_chambre');

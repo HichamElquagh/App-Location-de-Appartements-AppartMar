@@ -19,6 +19,7 @@ class Appartement extends Model
       'id',
       'user_id',
       'personne_id',
+      'name',
       'description',
       'space',
       'caracteristique_id',
@@ -42,5 +43,8 @@ class Appartement extends Model
     }
     public function localisation(){
       return $this->hasOne(Localisation::class);
+    }
+    public function person(){
+      return $this->belongsTo(Person::class);
     }
 }
