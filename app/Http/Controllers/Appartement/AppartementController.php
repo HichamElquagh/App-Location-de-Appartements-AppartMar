@@ -8,6 +8,7 @@ use App\Models\Localisation;
 use App\Models\Person;
 use App\Models\Characteristic;
 use App\Models\Citie;
+use Illuminate\Support\Str;
 use App\Http\Requests\StoreAppartementRequest;
 use App\Http\Requests\UpdateAppartementRequest;
 use App\Http\Controllers\Controller;
@@ -27,12 +28,15 @@ class AppartementController extends Controller
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
         $NombrePerson = Person::get();
-        $allapartemnt = Appartement::get();
+        $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+        // return $allcities;
+        // return $allapartemnt;
+        // return $allapartemnt;
         return view('mydashboard', [
             'persons' => $NombrePerson,
             'characteristics' => $allcharacteristic,
             'cities'=>$allcities,
-            'appartements'=>$allapartemnt
+            'appartements'=>$allapartemnt,
         ]);
         
         // return $allapartemnt;
@@ -57,6 +61,7 @@ class AppartementController extends Controller
     public function store(StoreAppartementRequest $request)
     {
         //
+        // return "ok";
             $userId = Auth()->user()->id;
             $status = Appartement::Disponible;
         
@@ -75,8 +80,8 @@ class AppartementController extends Controller
         
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
-                    $filename = time() . '.' . $image->getClientOriginalExtension();
-                    $image->storeAs('public/images', $filename);
+                    $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('image', $filename, 'public');
                     Image::insert([
                         'appartement_id' => $id,
                         'image' => $filename,
@@ -106,7 +111,9 @@ class AppartementController extends Controller
       $characteristiques = $request->input('caracteristique'); 
       $newAppartement->characteristics()->attach($characteristiques);
 
-    return redirect()->route('index');
+    // return $this->index();
+    return redirect()->route('dashboard');
+    
         }
 
 

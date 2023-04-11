@@ -13,5 +13,13 @@ class Localisation extends Model
     'appartement_id',
     'localisation',
     'city_id',
-    ]; 
+    ];
+    
+    
+    public function appartement(){
+        return $this->belongsTo(Appartement::class);
+    }
+    public function city(){
+        return $this->belongsTo(Citie::class);
+    }
 }

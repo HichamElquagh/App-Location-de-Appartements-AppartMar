@@ -40,4 +40,7 @@ class Appartement extends Model
     public function images(){
       return $this->hasMany(Image::class);
     }
+    public function localisation(){
+      return $this->hasOne(Localisation::class);
+    }
 }

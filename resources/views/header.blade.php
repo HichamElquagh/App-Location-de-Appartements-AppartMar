@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{asset('css\properties.css')}}">
         <link rel="stylesheet" href="{{asset('css\dash.css')}}">
         <link rel="stylesheet" href="{{asset('css\auth.css')}}">
+        
 
 
 

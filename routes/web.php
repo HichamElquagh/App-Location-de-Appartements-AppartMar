@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Appartement\AppartementController;
 use App\Http\Controllers\ElementAppartement\PersonController;
 use App\Http\Controllers\ElementAppartement\CharacteristicController ;
+use App\Http\Controllers\ElementAppartement\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,32 @@ use App\Http\Controllers\ElementAppartement\CharacteristicController ;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/', function () {
+    return view('landing');
+});
+// Route::get('/dashboard', function () {
+//     return view('mydashboard');
+// })->name('dashboard');
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/All.properties', function () {
+    return view('All_Properties');
+});
+Route::get('/a_propos', function () {
+    return view('a_propos');
+});
+Route::get('/test', function () {
+    return view('dashboard');
+});
+Route::get('/properties', function () {
+    return view('properties');
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,34 +52,19 @@ Route::middleware([
     })->name('landing');
 });
 
-
-Route::get('/dashboard', function () {
-    return view('mydashboard');
-})->name('dashboard');
-
-Route::get('/', function () {
-    return view('landing');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/All.properties', function () {
-    return view('All_Properties');
-});
-Route::get('/a_propos', function () {
-    return view('a_propos');
-});
-Route::get('/dash', function () {
-    return view('mydashboard');
-});
-Route::get('/properties', function () {
-    return view('properties');
-});
-
-
 Route::controller(AppartementController::class)->group(function(){
     Route::post('/appartement','store')->name('appartement.store');
-    Route::get('/','index')->name('index');
+    Route::get('/dashboard','index')->name('dashboard');
 });
+
+Route::controller(ReservationController::class)->group(function(){
+    Route::get('/reservation','index')->name('reservation.index');
+});
+
+Route::controller(CharacteristicController::class)->group(function(){
+    Route::post('/characteristics','store')->name('characteristic.store');
+    Route::get('/characteristics','index')->name('characteristic.index');
+});
+
 
 

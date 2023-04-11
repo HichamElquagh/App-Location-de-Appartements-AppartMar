@@ -54,6 +54,7 @@ a:focus {
     .dropdown-menu{
         width: 100% !important;
         min-width: unset !important;
+        
     }
     .bootstrap-select{
         width: 100% !important;
@@ -181,3 +182,14 @@ a.article:hover {
         display: none;
     }
 }
+
+
+
+
+
+
+
+/*  */
+
+
+

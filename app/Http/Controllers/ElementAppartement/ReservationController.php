@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\ElementAppartement;
 
-use App\Models\Characteristic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CharacteristicController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,7 @@ class CharacteristicController extends Controller
     public function index()
     {
         //
-       
-      return view('characteristic');
-
+        return view('reservation');
     }
 
     /**
@@ -40,23 +37,15 @@ class CharacteristicController extends Controller
     public function store(Request $request)
     {
         //
-        $characteristique = $request->caracteristic;
-        return $characteristique;
-        Characteristic::create([
-            'name'=>characteristique,
-        ]);
-        return route();
-
-        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Characteristic  $characteristic
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Characteristic $characteristic)
+    public function show($id)
     {
         //
     }
@@ -64,10 +53,10 @@ class CharacteristicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Characteristic  $characteristic
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Characteristic $characteristic)
+    public function edit($id)
     {
         //
     }
@@ -76,10 +65,10 @@ class CharacteristicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Characteristic  $characteristic
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Characteristic $characteristic)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -87,10 +76,10 @@ class CharacteristicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Characteristic  $characteristic
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Characteristic $characteristic)
+    public function destroy($id)
     {
         //
     }

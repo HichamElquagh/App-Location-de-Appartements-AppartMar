@@ -1,4 +1,5 @@
-@include('nav')
+@include('header') 
+@include('nav') 
 <body class="">
    <!-- <div class="container ">
    <img src="{{asset('img/architecture-morocco-style.jpg')}}"   alt="landing-image">

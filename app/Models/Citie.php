@@ -14,4 +14,11 @@ class Citie extends Model
         'id',
         'city',
     ];
+
+    public function localisation(){
+        return $this->hasOne(Characteristic::class);
+    }
+
+    
+
 }
