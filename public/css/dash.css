@@ -27,6 +27,14 @@ a:focus {
     transition: all 0.3s;
 }
 
+.header .lead {
+    max-width: 620px;
+  }
+  
+  .carousel-indicators li {
+    background-color: blue;
+  }
+
 .navbar {
     padding: 15px 10px;
     background: #fff;

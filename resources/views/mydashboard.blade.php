@@ -142,11 +142,38 @@
                                     </thead>
                                     <tbody>
                                         @foreach($appartements as $appartement)
+
                                         <tr>
                                             <th scope="row">1</th>
-                                            @foreach ($appartement->images as $image)
-                                            <td> <img src="{{ asset('storage/image/'.$image->image) }}" height="50" width="50"  alt=""></td>
-                                            @endforeach
+
+                    
+                                            
+                                            <div class="modal fade" id="exampleModal{{$loop->index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                 
+                                                  <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    @foreach ($appartement->images as $image)
+                                                    <img src="{{asset('storage/image/'.$image->image)}}" alt="" srcset="">
+                                                    @endforeach
+                                                    ...
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            
+                                            <td> 
+                                            <button type="button" class=" proper-btn btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{$loop->index}}" data-bs-whatever="@mdo">view images</button>
+                                          </td>
+                                            
                                             <td>{{$appartement->status}}</td>
                                             <td>{{$appartement->localisation->localisation}}</td>
                                             <td>{{$appartement->localisation->city->name}}</td> 
@@ -178,7 +205,7 @@
                                             <td>{{$appartement->date}}</td>
                                             <form action="">
                                             <td><button type="submit" class="" ><i class="fa-solid fa-pen-to-square"></i></button></td>
-                                            <td><button type="submit" class="" ><i class="fa-solid fa-trash"></i></button></td>
+                                            <td><i class="fa-solid fa-trash"></i></button></td>
                                           </form>
                                         </tr>
                                       @endforeach;
@@ -298,7 +325,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> 
     <!-- side barr  --> --}}
-   
+
 </x-slot>
 
    

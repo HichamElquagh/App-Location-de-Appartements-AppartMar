@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ElementAppartement;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
@@ -15,7 +16,9 @@ class ReservationController extends Controller
     public function index()
     {
         //
-        return view('reservation');
+         $reservation = Reservation::with('user')->get();
+        return view('reservation' , ['reservations'=>$reservation] 
+    );
     }
 
     /**

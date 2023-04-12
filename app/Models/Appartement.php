@@ -44,7 +44,12 @@ class Appartement extends Model
     public function localisation(){
       return $this->hasOne(Localisation::class);
     }
+
     public function person(){
       return $this->belongsTo(Person::class);
+    }
+
+    public function reservations(){
+           return $this->hasMany(Reservation::class);
     }
 }

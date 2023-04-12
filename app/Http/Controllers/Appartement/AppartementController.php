@@ -31,7 +31,7 @@ class AppartementController extends Controller
         $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
         // return $allcities;
         // return $allapartemnt;
-        // return $allapartemnt;
+        // return $allapartemnt->localisation;
         return view('mydashboard', [
             'persons' => $NombrePerson,
             'characteristics' => $allcharacteristic,
@@ -79,7 +79,6 @@ class AppartementController extends Controller
             $id = $newAppartement->id;
             $images = [];
         
-            if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
                     $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
                     $image->storeAs('image', $filename, 'public');
@@ -88,7 +87,6 @@ class AppartementController extends Controller
                         'image' => $filename,
                     ]);
                 }
-            }
             
         
             // $id = $newAppartement->id;
