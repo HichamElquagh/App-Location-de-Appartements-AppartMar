@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Appartement;
 use App\Models\Appartement;
 use App\Models\Image;
 use App\Models\Localisation;
-use App\Models\Person;
 use App\Models\Characteristic;
 use App\Models\Citie;
 use Illuminate\Support\Str;
@@ -27,13 +26,13 @@ class AppartementController extends Controller
         //
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
-        $NombrePerson = Person::get();
+        // $NombrePerson = Person::get();
         $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
         // return $allcities;
         // return $allapartemnt;
         // return $allapartemnt->localisation;
         return view('mydashboard', [
-            'persons' => $NombrePerson,
+            // 'persons' => $NombrePerson,
             'characteristics' => $allcharacteristic,
             'cities'=>$allcities,
             'appartements'=>$allapartemnt,
@@ -67,7 +66,7 @@ class AppartementController extends Controller
         
             $newAppartement = Appartement::create([
                 'user_id' => $userId,
-                'personne_id' => $request->nombrePersonne,
+                'person_nombre' => $request->nombrePersonne,
                 'name'=>$request->name_appartement,
                 'description' => $request->description,
                 'space' => $request->espaces,
@@ -141,9 +140,22 @@ class AppartementController extends Controller
      * @param  \App\Models\Appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appartement $appartement)
+    public function edit($id)
     {
-        //
+         $allcharacteristic = Characteristic::get();
+        $thisappartement = Appartement::with('images')->with('characteristics')->with('localisation.city')->find($id);
+    //    return $thisappartement->characteristics;
+    foreach($thisappartement->characteristics as $characteristic){
+
+        $selectedCharacteristics[] = $characteristic->id;
+    }
+    // return $selectedCharacteristics;
+         return view('edit_properties',[
+            'appartement'=>$thisappartement,
+            'characteristics'=>$allcharacteristic,
+            'selectedCharacteristics'=>$selectedCharacteristics
+        ]);
+        
     }
 
     /**
@@ -153,9 +165,14 @@ class AppartementController extends Controller
      * @param  \App\Models\Appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAppartementRequest $request, Appartement $appartement)
+    public function update(UpdateAppartementRequest $request,$id)
+
     {
-        //
+
+        $thisappartement = Appartement::find($id);
+        $thisappartement->update($request->all());    
+        return redirect()->route('dashboard');
+
     }
 
     /**
@@ -164,8 +181,13 @@ class AppartementController extends Controller
      * @param  \App\Models\Appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appartement $appartement)
+    public function destroy(Appartement $appartement, $id)
     {
         //
+        {    
+            //  $appartement->find($id);
+            $appartement->find($id)->delete();
+            return redirect()->route('dashboard')->with('success','Appartement has been deleted successfully');
+        }
     }
 }

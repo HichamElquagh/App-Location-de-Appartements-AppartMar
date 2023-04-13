@@ -174,11 +174,12 @@
                                             <button type="button" class=" proper-btn btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{$loop->index}}" data-bs-whatever="@mdo">view images</button>
                                           </td>
                                             
+                                            <td>{{$appartement->name}}</td>
                                             <td>{{$appartement->status}}</td>
                                             <td>{{$appartement->localisation->localisation}}</td>
                                             <td>{{$appartement->localisation->city->name}}</td> 
                                             <td>{{$appartement->description}}</td>
-                                            <td>Member</td> 
+                                            <td>{{$appartement->person_nombre}}</td> 
                                             <td>{{$appartement->prix}}</td>
                                             <td>{{$appartement->space}}</td>
                                             {{-- @foreach ($appartement->characteristics as $characteristic)
@@ -203,10 +204,12 @@
                                                 </div>
                                             </div></td>
                                             <td>{{$appartement->date}}</td>
-                                            <form action="">
-                                            <td><button type="submit" class="" ><i class="fa-solid fa-pen-to-square"></i></button></td>
-                                            <td><i class="fa-solid fa-trash"></i></button></td>
-                                          </form>
+                                            <form action="" method="POST">
+                                            <td><a href="{{route('properties.edit', $appartement->id)}}"><i class="fa-solid fa-pen-to-square"></i></td></a>
+                                             @csrf
+                                             @method('DELETE')
+                                            </form>
+                                             <td><button type="button" class="" data-bs-toggle="modal" data-bs-target="#deletemodal" data-bs-whatever="@mdo"> <i class="fa-solid fa-trash"></i></button></td>
                                         </tr>
                                       @endforeach;
                                     </tbody>
@@ -272,9 +275,9 @@
             <label for="recipient-name" class="col-form-label" >Nombre de Personne</label>
         <select class="form-select" aria-label="Default select example" name="nombrePersonne">
             <option selected>Nombre de Personne</option>
-            @foreach($persons as $person)
-            <option value="{{$person->id}}">{{$person->person}}</option>  
-            @endforeach;  
+            @for($i=1;$i<=6;$i++)
+            <option value="{{$i}}">{{$i}}</option>  
+            @endfor;  
         </select>
                 <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Espaces</label>
@@ -293,30 +296,26 @@
     </div>
   </div>
 </div>
-{{-- modal char --}}
+{{-- modal delete --}}
 
-{{-- <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content ">
-        <div class=" modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Nom de l'appartement</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modall" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="{{route('caracteristic.store')}}" method="POST" id="form" >
-              @csrf
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">caracteristic</label>
-                <input type="text" class="form-control" name="caracteristic" id="recipient-name">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="" class="btn btn-primary" name="save" >Save</button>
-              </div>
-            </form>
-        </div>
+<div class="modal fade" id="deletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p>Are you sure you want to delete?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">No</button>
+              <button type="button" class="btn btn-danger">Yes</button>
+          </div>
       </div>
-    </div> --}}
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 {{-- rechrche citei--}}
 

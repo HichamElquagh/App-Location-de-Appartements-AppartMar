@@ -8,6 +8,8 @@ class="my-footer d-print-none text-center mt-5 text-lg-start text-dark  "
 <!--Grid row-->
 <div class="row">
 <!-- Grid column -->
+<hr/>
+
 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
   <h3 class="text-uppercase mb-4 font-weight-bold">
       <img src = "{{asset('/images/gotow.svg')}}" alt="logo" style="with:3em;  height:3em;"/> <br>

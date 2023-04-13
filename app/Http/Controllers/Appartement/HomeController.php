@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Appartement;
 use App\Models\Image;
 use App\Models\Localisation;
-use App\Models\Person;
 use App\Models\Characteristic;
 use App\Models\Citie;
 use App\Models\PersonController;
@@ -24,7 +23,7 @@ class HomeController extends Controller
         //
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
-        $NombrePerson = Person::get();
+     
         $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
         // return $allcities;
         // return $allapartemnt;
@@ -39,8 +38,32 @@ class HomeController extends Controller
         ]);
         
 
-
     }
+
+
+        public function indexlanding()
+        {
+            //
+            $allcities = Citie::all();
+            $allcharacteristic = Characteristic::get();
+
+            $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+            // return $allcities;
+            // return $allapartemnt;
+            // return $allapartemnt;
+            // return $allapartemnt;
+    
+            return view('landing', [
+                // 'persons' => $NombrePerson,
+                // 'characteristics' => $allcharacteristic,
+                // 'cities'=>$allcities,
+                'appartements'=>$allapartemnt,
+            ]);
+            
+    
+    
+        }
+    
 
     /**
      * Show the form for creating a new resource.

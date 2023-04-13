@@ -18,7 +18,7 @@ class Appartement extends Model
     protected $fillable =[
       'id',
       'user_id',
-      'personne_id',
+      'person_nombre',
       'name',
       'description',
       'space',
@@ -45,9 +45,6 @@ class Appartement extends Model
       return $this->hasOne(Localisation::class);
     }
 
-    public function person(){
-      return $this->belongsTo(Person::class);
-    }
 
     public function reservations(){
            return $this->hasMany(Reservation::class);

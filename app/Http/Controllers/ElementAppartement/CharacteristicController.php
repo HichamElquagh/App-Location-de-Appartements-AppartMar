@@ -40,12 +40,12 @@ class CharacteristicController extends Controller
     public function store(Request $request)
     {
         //
-        $characteristique = $request->caracteristic;
-        return $characteristique;
-        Characteristic::create([
-            'name'=>characteristique,
-        ]);
-        return route();
+        // $characteristique = $request->caracteristic;
+        // return $characteristique;
+        // Characteristic::create([
+        //     'name'=>characteristique,
+        // ]);
+        // return route();
 
         
     }

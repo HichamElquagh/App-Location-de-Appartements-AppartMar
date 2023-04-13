@@ -13,7 +13,7 @@ class UpdateAppartementRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,23 @@ class UpdateAppartementRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        
             //
+            return [
+                //
+                'localisation'=>'',
+                'name_appartement'=>'',
+                'city'=>'',
+                'description'=>'',
+                'images.*' => '|image|mimes:jpeg,png,jpg,gif,svg',
+                'prix'=>'',
+                'caracteristique'=>'',
+                'nombrePersonne'=>'',
+                'nombreChambre'=>'',
+                'espaces'=>'',
+                'date'=>''
+                
+        
         ];
     }
 }

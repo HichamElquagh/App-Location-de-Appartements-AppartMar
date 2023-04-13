@@ -23,7 +23,114 @@
     </div>
   </div>
       
-  <div class="bg-content-living container-fluid d-flex flex-column  ">
+ 
+              
+
+
+ <!-- cursouel  -->
+    
+ <div class="container my-5"> 
+  <div class="d-flex justify-content-between "> 
+    <div> <p class="properties">list of properties</p></div>
+   <div class="d-flex algin-items-center"><button class="btn-view">View All Properties</button></div>
+  </div>
+ 
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<div class="row mx-auto ">
+  @foreach($appartements as $appartement)
+  <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
+      <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
+        @foreach ($appartement->images as $image)
+      <a href="properties"><img src="{{asset('storage/image/'.$image->image)}}" class="card-img-top" > </a> 
+      @break
+      @endforeach;
+      <div class="card-body text-center">
+        <h5 class="card-title fw-bold text-dark">{{$appartement->name}}</h5>
+        <p class="mb-2 items-center text-dark" ><i class="fa-solid fa-location-dot"></i>  {{$appartement->localisation->city->name}},{{$appartement->localisation->localisation}}</p>
+        <p class="card-text text-success">MAD{{$appartement->prix}}</p>
+        <hr class="my-1" />
+        <p class="fw-bold text-dark">Status : {{$appartement->status}}</p>
+        <p class="text-dark"><span class="fw-bold text-dark">Date :</span>{{$appartement->date}}</p>
+      </div>    
+    </div>
+  </div> 
+  @endforeach
+
+
+
+
+
+<div class="carousel-item">
+<div class="row mx-auto ">
+<div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
+<div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
+<img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
+<div class="card-body text-center">
+<h5 class="card-title fw-bold text-dark">test</h5>
+<p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+<p class="card-text text-success">test</p>
+<hr class="my-1" />
+<p class="fw-bold text-dark">Available on :</p>
+<p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
+</div>    
+</div>
+</div>  
+
+<div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
+<div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
+<img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
+<div class="card-body text-center">
+<h5 class="card-title fw-bold text-dark">test</h5>
+<p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+<p class="card-text text-success">test</p>
+<hr class="my-1" />
+<p class="fw-bold text-dark">Available on :</p>
+<p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
+</div>    
+</div>
+</div>  
+
+<div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
+<div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
+<img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
+<div class="card-body text-center">
+<h5 class="card-title fw-bold text-dark">test</h5>
+<p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
+<p class="card-text text-success">test</p>
+<hr class="my-1" />
+<p class="fw-bold text-dark">Available on :</p>
+<p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
+</div>    
+</div>
+</div>  
+</div>  
+
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+<span class="carousel-control-prev-icon " aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+<span class=" text-dark carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+
+
+
+
+
+
+<div class="bg-content-living container-fluid d-flex flex-column  ">
   <div class="text-center">
     <p class="script-living">minimum living cost takes care of everything</p>
   </div>
@@ -45,128 +152,6 @@
     </div>
   </div>
  </div> 
-              
-
-
-
- <!-- cursouel  -->
-    
-                 <div class="container my-5"> 
-                  <div class="d-flex justify-content-between "> 
-                    <div> <p class="properties">list of properties</p></div>
-                   <div class="d-flex algin-items-center"><button class="btn-view">View All Properties</button></div>
-                  </div>
-                 
- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    <div class="row mx-auto ">
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>   
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-     </div>
-     </div>
-
-    <div class="carousel-item">
-    <div class="row mx-auto ">
-    <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-            <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
-              <img src="{{asset('/img/modern-living-room.jpg')}}" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold text-dark">test</h5>
-              <p class="mb-2 items-center text-dark" ><i class="bi bi-geo-alt-fill"></i> : test</p>
-              <p class="card-text text-success">test</p>
-              <hr class="my-1" />
-              <p class="fw-bold text-dark">Available on :</p>
-              <p class="text-dark"><span class="fw-bold text-dark">Date :</span> 12:03:2022</p>
-            </div>    
-          </div>
-        </div>  
-        </div>  
-
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class=" text-dark carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
 
 
 @include('footer') 

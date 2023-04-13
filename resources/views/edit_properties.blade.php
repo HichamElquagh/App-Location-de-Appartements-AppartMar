@@ -31,92 +31,124 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <form method="POST" action="" enctype="multipart/form-data">
+                                <form method="POST" action="{{route('properties.update',$appartement->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row formtype">
-                                        <div class="col-md-4">
+                                        <h5>Images</h5>                                        
+                                        <div class="d-flex flex-wrap justify-content-sm-center mb-4 "> 
+                                            @foreach ($appartement->images as $image)
+                                            <div class="d-flex  m-2">
+                                            <img src="{{asset('storage/image/'.$image->image)}}" class="rounded edit_image" alt="" srcset="">
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="col-md-4">                                         
                                             <div class="form-group">
                                                 <label>Properties Name</label>
-                                                <input class="form-control @error('nameR') is-invalid  @enderror" type="text" name="nameR"  value="">
+                                                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name"  value="{{$appartement->name}}">
                                             </div>
                                         </div>
         
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Room Categorie</label>
-                                                <select class="form-control @error('categorie_id') is-invalid  @enderror" id="sel1" name="categorie_id">
-                                                    <option disabled selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-        
-                                                </select>
-                                            </div>
+                                            <label for="recipient-name" class="col-form-label" >choisir votre Ville</label>
+                                            <select class="form-select" aria-label="Default select example" name="city">
+                                                
+                                                  <option selected value="{{$appartement->localisation->city->name}}">{{$appartement->localisation->city->name}}</option>
+                                                  <option value=""></option>
+                                       
+                                            </select>
                                         </div>
-                                        {{-- <!-- <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Statut Room</label>
-                                                <input type="checkbox" id="statutR" name="statutR" value="1" checked>
-                                                <select class="form-control" id="sel2" name="statutR">
-                                                    <option disabled selected>Open this select menu</option>
-                                                    <option>AC</option>
-                                                    <option>NON-AC</option>
-                                                </select>
-                                            </div>
-                                        </div> --> --}}
+                                       
         
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Number Of Beds </label>
-                                                <select class="form-control" id="sel" name="numberBed">
-                                                    <option disabled selected>Open this select menu</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                </select>
-                                            </div>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Adresse</label>
+                                                <input type="text" class="form-control" name="localisation" id="recipient-name" value="{{$appartement->localisation->localisation}}">
+                                              </div>
                                         </div>
         
         
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Price Room</label>
-                                                <input type="number" class="form-control" id="priceR" name="priceR"  value="">
-                                            </div>
+                                            <div class="mb-3">
+                                                <label for="message-text" class="col-form-label">Description </label>
+                                                <textarea class="form-control" rows="5" name="description" id="message-text">{{$appartement->description}}</textarea>
+                                              </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Picture Room</label>
-                                                <div class="custom-file mb-3">
-                                                    <input type="file" class="custom-file-input" id="customFile" name="pictureR">
-                                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                                </div>
+                                       
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label">Image</label>
+                                                    <input type="file" class="form-control" name="images[]" multiple id="recipient-name">
+                                                  </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Room description</label>
-                                                <textarea class="form-control" rows="5" id="description" name="descriptionR"></textarea>
-        
-                                            </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Prix</label>
+                                                <input type="number" class="form-control" name="prix" id="recipient-name" step="0.01" min="0" value="{{$appartement->prix}}">
+                                              </div>
                                         </div>
         
                                         <!-- add relation with facilitie?? -->
-                                        <div class="col-md-12">
-                                            <label class="form-label">Facilities </label>
-                                            <div class="row">
-                                                {{-- @foreach($facilities as $facilitie) --}}
-                                                <div class="col-md-3 mb-1">
-                                                    <label for="">
-                                                        <input class="form-check-input shadow-none" name="facilities[]" type="checkbox" value="" id="flexCheckDefault">
-                                                        
-                                                    </label>
+
+                                       
+                                          <div class="col-md-4">
+                                            <label for="recipient-name" class="col-form-label" for="tags">Caractéristiques sélectionnées</label>
+                                            
+                                            @foreach ($characteristics as $characteristic)
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" name="characteristics[]" value="{{$characteristic->id}}"
+                                                    {{in_array($characteristic->id, $selectedCharacteristics) ? 'checked' : '' }}>
+                                                    {{-- {{$characteristic->name}} --}}
+                                                    {{-- {{dd($selectedCharacteristics)}} --}}
+                                                    <label class="form-check-label" for="characteristic">{{$characteristic->name}}</label>
                                                 </div>
-                                                {{-- @endforeach --}}
+                                            @endforeach
+                                           
+                                        </div>
+                                          <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Nombre de Chambre</label>
+                                                <input type="number" class="form-control" name="nombreChambre" value="{{$appartement->no_chambre}}" id="recipient-name">
+                                            </div>
+                                          </div>
+                                           
+                                          <div class="col-md-4">
+                                            <label for="recipient-name" class="col-form-label" >Nombre de Personne</label>
+                                            <select class="form-select" aria-label="Default select example" name="nombrePersonne">
+                                                {{-- <option selected>{{$appartement->person_nombre}}</option> --}}
+                                                @for($i=1;$i<=6;$i++)
+                                                <option value="{{$i}}" {{$i == $appartement->person_nombre ? 'selected' : ''}}>{{$i}}</option>  
+                                                @endfor;  
+                                            </select>
+                                          </div>
+
+                                          {{-- <div class="col-md-4">
+                                            <label for="recipient-name" class="col-form-label" for="tags">Sélectionnez des Caracteristiques:</label>
+                                            <select class="form-select" aria-label="Default select example" name="" id="tags" multiple>
+                                             
+                                                <input type="checkbox"  value="{{$characteristic->id}}">{{$characteristic->name}} 
+                                               
+                                             
+                                            </select>
+                                          </div> --}}
+                                          <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label">Espaces</label>
+                                                    <input type="text" class="form-control" value="{{$appartement->space}}" name="espaces" id="recipient-name">
+                                                </div>
+                                           </div>
+
+                                           <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Date</label>
+                                                <input type="date" class="form-control" value="{{$appartement->date}}" name="date" id="recipient-name">
+                                              </div>
+                                       </div>
+                                      
+
                                             </div>
         
                                         </div>
@@ -124,10 +156,13 @@
                                     </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary buttonedit ml-2">Save</button>
+                        <div class="my-5">
+                        <button type="submit" class="btn btn-primary buttonedit ml-2">Update</button>
                         <button type="button" class="btn btn-primary buttonedit">Cancel</button>
                     </div>
+                    </div>
                     </form>
+                    
                 </div>
         
             </div>

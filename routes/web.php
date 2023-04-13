@@ -19,9 +19,9 @@ use App\Http\Controllers\ElementAppartement\ReservationController;
 */
 
 
-Route::get('/', function () {
-    return view('landing');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 // Route::get('/dashboard', function () {
 //     return view('mydashboard');
 // })->name('dashboard');
@@ -47,15 +47,13 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
-    Route::get('/landing', function () {
-        return view('landing');
-    })->name('landing');
-});
+]);
 
 Route::controller(AppartementController::class)->group(function(){
     Route::post('/appartement','store')->name('appartement.store');
     Route::get('/dashboard','index')->name('dashboard');
+    Route::get('propertie/{id}','edit')->name('properties.edit');
+    Route::put('/propertie/{id}','update')->name('properties.update');
 });
 
 Route::controller(ReservationController::class)->group(function(){
@@ -68,6 +66,7 @@ Route::controller(CharacteristicController::class)->group(function(){
 });
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
+    Route::get('/','indexlanding');
 });
 
 
