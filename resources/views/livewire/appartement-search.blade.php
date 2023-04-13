@@ -5,10 +5,11 @@
           <div> <p class="properties">list of properties</p></div>
           <div class="col-md-4 col-10">
             <form class="form-inline">
-              <div class="form-group mx-sm-3 my-3">
-                <label for="inputSearch" class="sr-only"></label>
-                <input type="text" class="form-control " wire:model="search" id="inputSearch" placeholder="Recherche">
-              </div>
+                <div class="form-group mx-sm-3 ">
+                    <label for="inputSearch" class="sr-only">Recherche</label>
+                      <input type="text" class="form-control" wire:model="search" id="inputSearch" placeholder="Recherche">
+                      <i class="ms-2 mt-2 fa fa-search"></i>
+                  </div>
               <!-- <button type="submit" class="btn btn-primary mb-2">Chercher</button> -->
             </form>
           </div>
