@@ -124,9 +124,9 @@ line-height: 64px;
     text-align: center;
     width: 10rem; 
      height: 3rem;
-    background-color:#F4511E;
-    color: #FFFFFF;
+    background-color:#d3d3d3;
+    color: #000000;
     border: 0;
-    background: #F4511E;
+    background: #dddddd;
     border-radius: 5px;
 }

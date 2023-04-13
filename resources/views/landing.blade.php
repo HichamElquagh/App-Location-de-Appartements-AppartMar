@@ -15,7 +15,7 @@
         <form class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
               <label for="inputSearch" class="sr-only"></label>
-              <input type="text" class="form-control" id="inputSearch" placeholder="Recherche">
+              <div class=" d-flex justify-content-center"><a href="#here" class="btn-view">View All Properties</a></div>
             </div>
             <!-- <button type="submit" class="btn btn-primary mb-2">Chercher</button> -->
           </form>
@@ -29,12 +29,21 @@
 
  <!-- cursouel  -->
     
- <div class="container my-5"> 
-  <div class="d-flex justify-content-between "> 
+  <div id="here" class="container my-5">  
+    @livewire('appartement-search')
+  <div> 
+  {{-- <div class="d-flex justify-content-between "> 
     <div> <p class="properties">list of properties</p></div>
-   <div class="d-flex algin-items-center"><button class="btn-view">View All Properties</button></div>
+    <div class="col-md-4 col-10">
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 my-3">
+          <label for="inputSearch" class="sr-only"></label>
+          <input type="text" class="form-control " id="inputSearch" placeholder="Recherche">
+        </div>
+         <button type="submit" class="btn btn-primary mb-2">Chercher</button> 
+      </form>
+    </div>
   </div>
- 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 <div class="carousel-indicators">
 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -123,14 +132,14 @@
 <span class="visually-hidden">Next</span>
 </button>
 </div>
-</div>
+</div> --}} 
 
 
 
 
 
 
-<div class="bg-content-living container-fluid d-flex flex-column  ">
+<div class="  bg-content-living container-fluid d-flex flex-column  ">
   <div class="text-center">
     <p class="script-living">minimum living cost takes care of everything</p>
   </div>
@@ -153,7 +162,7 @@
   </div>
  </div> 
 
-
+@livewireScripts
 @include('footer') 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </body>
