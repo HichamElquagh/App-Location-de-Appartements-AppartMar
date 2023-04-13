@@ -46,18 +46,20 @@
                                         <div class="col-md-4">                                         
                                             <div class="form-group">
                                                 <label>Properties Name</label>
-                                                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name"  value="{{$appartement->name}}">
+                                                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name_appartement"  value="{{$appartement->name}}">
                                             </div>
                                         </div>
         
                                         <div class="col-md-4">
                                             <label for="recipient-name" class="col-form-label" >choisir votre Ville</label>
                                             <select class="form-select" aria-label="Default select example" name="city">
-                                                
-                                                  <option selected value="{{$appartement->localisation->city->name}}">{{$appartement->localisation->city->name}}</option>
-                                                  <option value=""></option>
-                                       
+                                                @foreach($cities as $city)
+                                                  <option value="{{$city->id}}"{{in_array($city->id,$selectedCity) ? 'selected' : '' }}>{{$city->name}}</option>  
+                                                   
+                                                  @endforeach;  
                                             </select>
+
+                                            
                                         </div>
                                        
         
@@ -109,10 +111,12 @@
                                            
                                         </div>
                                           <div class="col-md-4">
-                                            <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Nombre de Chambre</label>
-                                                <input type="number" class="form-control" name="nombreChambre" value="{{$appartement->no_chambre}}" id="recipient-name">
-                                            </div>
+                                            <label for="recipient-name" class="col-form-label" >Nombre de Chambre</label>
+                                            <select class="form-select" aria-label="Default select example" name="nombreChambre">
+                                                @for($i=1;$i<=6;$i++)
+                                                <option value="{{$i}}" {{$i == $appartement->no_chambre? 'selected' : ''}}>{{$i}}</option>  
+                                                @endfor;  
+                                            </select>
                                           </div>
                                            
                                           <div class="col-md-4">

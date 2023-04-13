@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('appartements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('person_nombre');
             $table->text('name');
             $table->text('description');

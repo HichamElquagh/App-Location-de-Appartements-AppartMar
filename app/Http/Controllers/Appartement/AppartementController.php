@@ -8,6 +8,7 @@ use App\Models\Localisation;
 use App\Models\Characteristic;
 use App\Models\Citie;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreAppartementRequest;
 use App\Http\Requests\UpdateAppartementRequest;
 use App\Http\Controllers\Controller;
@@ -141,7 +142,8 @@ class AppartementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {    
+         $allcities = Citie::all();
          $allcharacteristic = Characteristic::get();
         $thisappartement = Appartement::with('images')->with('characteristics')->with('localisation.city')->find($id);
     //    return $thisappartement->characteristics;
@@ -149,11 +151,14 @@ class AppartementController extends Controller
 
         $selectedCharacteristics[] = $characteristic->id;
     }
+    $thiscity[] = $thisappartement->localisation->city->id;
     // return $selectedCharacteristics;
          return view('edit_properties',[
             'appartement'=>$thisappartement,
             'characteristics'=>$allcharacteristic,
-            'selectedCharacteristics'=>$selectedCharacteristics
+            'selectedCharacteristics'=>$selectedCharacteristics,
+            'selectedCity'=>$thiscity,
+            'cities'=>$allcities,
         ]);
         
     }
@@ -169,11 +174,50 @@ class AppartementController extends Controller
 
     {
 
-        $thisappartement = Appartement::find($id);
-        $thisappartement->update($request->all());    
-        return redirect()->route('dashboard');
+        // return $request->input('characteristics');
+        $appartement = Appartement::find($id);
 
+    // update the appa$appartement's attributes
+  
+    $appartement->update([
+        'person_nombre' => $request->nombrePersonne,
+        'name'=>$request->name_appartement,
+        'description' => $request->description,
+        'space' => $request->espaces,
+        'no_chambre' => $request->nombreChambre,
+        'prix' => $request->prix,
+        'date' => $request->date,
+    ]);
+    // save the changes to the appa$appartement
+    
+    // update the appa$appartement's images
+    if($request->file('images')){ 
+    foreach ($request->file('images') as $image) {
+        $filename = Str::uuid()->toString() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('image', $filename, 'public');
+        Image::create([
+            'appartement_id' => $appartement->id,
+            'image' => $filename,
+        ]);
     }
+   }
+    // update the $appartement's localisation
+    $appartement->localisation->update([
+        'localisation' => $request->localisation,
+        'city_id' => $request->city,
+    ]);
+
+    // update the $appartement's characteristics
+    $characteristics = $request->input('characteristics');
+    $appartement->characteristics()->sync($characteristics);
+        
+
+
+    //   $characteristiques = $request->input('caracteristique'); 
+    //   $newAppartement->characteristics()->attach($characteristiques);
+        return redirect()->route('dashboard');
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -181,12 +225,14 @@ class AppartementController extends Controller
      * @param  \App\Models\Appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appartement $appartement, $id)
+    public function destroy(Request $request)
     {
         //
         {    
+            $id = $request->id;
+            // return $id;
             //  $appartement->find($id);
-            $appartement->find($id)->delete();
+            Appartement::find($id)->delete();
             return redirect()->route('dashboard')->with('success','Appartement has been deleted successfully');
         }
     }

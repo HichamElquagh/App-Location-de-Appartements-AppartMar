@@ -54,6 +54,7 @@ Route::controller(AppartementController::class)->group(function(){
     Route::get('/dashboard','index')->name('dashboard');
     Route::get('propertie/{id}','edit')->name('properties.edit');
     Route::put('/propertie/{id}','update')->name('properties.update');
+    Route::delete('/propertie','destroy')->name('properties.destroy');
 });
 
 Route::controller(ReservationController::class)->group(function(){

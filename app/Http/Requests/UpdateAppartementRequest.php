@@ -27,17 +27,17 @@ class UpdateAppartementRequest extends FormRequest
             //
             return [
                 //
-                'localisation'=>'',
-                'name_appartement'=>'',
-                'city'=>'',
-                'description'=>'',
+                'localisation'=>'required',
+                'name_appartement'=>'required',
+                'city'=>'required',
+                'description'=>'required',
                 'images.*' => '|image|mimes:jpeg,png,jpg,gif,svg',
-                'prix'=>'',
-                'caracteristique'=>'',
-                'nombrePersonne'=>'',
-                'nombreChambre'=>'',
-                'espaces'=>'',
-                'date'=>''
+                'prix'=>'required',
+                'characteristics'=>'required',
+                'nombrePersonne'=>'required',
+                'nombreChambre'=>'required',
+                'espaces'=>'required',
+                'date'=>'required'
                 
         
         ];
