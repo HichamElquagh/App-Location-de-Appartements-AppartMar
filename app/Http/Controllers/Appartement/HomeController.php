@@ -25,6 +25,7 @@ class HomeController extends Controller
         $allcharacteristic = Characteristic::get();
      
         $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+        // return $allapartemnt;
         // return $allcities;
         // return $allapartemnt;
         // return $allapartemnt;
@@ -95,6 +96,14 @@ class HomeController extends Controller
     public function show($id)
     {
         //
+        $thisappartement = Appartement::with('images')->with('characteristics')->with('localisation.city')->find($id);
+        // return $thisappartement;
+
+        return view('properties',[
+            'appartement'=>$thisappartement,
+        ]);
+        
+
     }
 
     /**

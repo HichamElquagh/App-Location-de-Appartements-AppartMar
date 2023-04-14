@@ -13,11 +13,8 @@
      </div>
       <div class="col-md-4 col-10">
         <form class="form-inline">
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="inputSearch" class="sr-only"></label>
-              <div class=" d-flex justify-content-center"><a href="#here" class="btn-view">View All Properties</a></div>
-            </div>
-            <!-- <button type="submit" class="btn btn-primary mb-2">Chercher</button> -->
+              <div class=" d-flex flex-column justify-content-center"><a href="#here" class="description-acceuil">View Properties
+            <button type="button" class="btn btn-light col-4 fs-4  mb-2">view</button></a> </div>
           </form>
       </div>
     </div>

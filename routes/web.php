@@ -50,10 +50,10 @@ Route::middleware([
 ]);
 
 Route::controller(AppartementController::class)->group(function(){
-    Route::post('/appartement','store')->name('appartement.store');
-    Route::get('/dashboard','index')->name('dashboard');
-    Route::get('propertie/{id}','edit')->name('properties.edit');
-    Route::put('/propertie/{id}','update')->name('properties.update');
+    Route::post('/appartementt','store')->name('appartement.store');
+    Route::get('/dashboardd','index')->name('dashboard');
+    Route::get('properties/{id}','edit')->name('properties.edit');
+    Route::put('/propertiess/{id}','update')->name('properties.update');
     Route::delete('/propertie','destroy')->name('properties.destroy');
 });
 
@@ -62,12 +62,13 @@ Route::controller(ReservationController::class)->group(function(){
 });
 
 Route::controller(CharacteristicController::class)->group(function(){
-    Route::post('/characteristics','store')->name('characteristic.store');
+    Route::post('/characteristicss','store')->name('characteristic.store');
     Route::get('/characteristics','index')->name('characteristic.index');
 });
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
     Route::get('/','indexlanding');
+    Route::get('/propertiesssss/{id}','show')->name('propertie.show');
 });
 
 

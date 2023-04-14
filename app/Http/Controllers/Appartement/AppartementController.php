@@ -195,7 +195,7 @@ class AppartementController extends Controller
     foreach ($request->file('images') as $image) {
         $filename = Str::uuid()->toString() . '.' . $image->getClientOriginalExtension();
         $image->storeAs('image', $filename, 'public');
-        $appartement->images->update([
+          Image::create([
             'appartement_id' => $appartement->id,
             'image' => $filename,
         ]);

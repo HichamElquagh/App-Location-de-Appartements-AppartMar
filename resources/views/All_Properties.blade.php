@@ -6,14 +6,7 @@
      <div class="d-flex justify-content-start "> 
        <div> <p class="properties">list of properties</p></div>
      </div>
-    <div class=" my-5"> 
-     
-
-
-
-
-
-       
+    <div class=" my-5">        
     <div class="row mx-auto ">
       <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 px-0">
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
@@ -59,10 +52,10 @@
         </nav></div>
       <div class="row col-lg-9 col-md-12 mb-lg-0">
           @foreach($appartements as $appartement)
-        <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
+        <div class="col-md-6 col-lg-4 p-2 col-12"  >
             <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
               @foreach ($appartement->images as $image)
-            <a href="properties"><img src="{{asset('storage/image/'.$image->image)}}" class="card-img-top" > </a> 
+            <a href="{{route('propertie.show', $appartement->id)}}"><img src="{{asset('storage/image/'.$image->image)}}" class="card-img-top" > </a> 
             @break
             @endforeach;
             <div class="card-body text-center">
@@ -76,22 +69,11 @@
           </div>
         </div> 
         @endforeach</div>
-          
-      
-       
-      
-
-
-
-          
      </div>
   </div>
 </a> 
     
-
-
-
-    @include('footer')
+    @include('footer')  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
