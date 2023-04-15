@@ -4,7 +4,9 @@ namespace App\Http\Controllers\ElementAppartement;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\storeReservationRequest;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -37,9 +39,24 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeReservationRequest $request , $id)
     {
         //
+        $user_id = Auth()->user()->id;
+        $appartement_id = $id;
+
+        Reservation::create([
+            'appartement_id'=>$appartement_id,
+            'user_id'=>$user_id,
+            'date_debut'=>$request->start_date,
+            'date_fin'=>$request->end_date,
+        ]);
+
+        return redirect()->route('reservation.index');
+
+
+        
+
     }
 
     /**

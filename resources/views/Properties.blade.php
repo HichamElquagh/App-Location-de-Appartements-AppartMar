@@ -7,21 +7,61 @@
      
     <div class="container my-5">
       <div class="row justify-content-center">
-        <div class="col-md-6 ">
-          @foreach ($appartement->images as $image)
+        <div class="col-md-7 ">
+          <h3>appartement :  {{$appartement->name}}</h3>
+          {{-- @foreach ($appartement->images as $image)
           <img src="{{asset('storage/image/'.$image->image)}}" class="img-fluid rounded " alt="Appartement">
           @endforeach;
+        </div> --}}
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            @foreach ($appartement->images as $key => $image)
+              <div class="carousel-item @if ($key === 0) active @endif">
+                <img src="{{asset('storage/image/'.$image->image)}}" class="img-fluid rounded " alt=".">
+              </div>
+            @endforeach
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <div class="col-md-5 col  d-flex flex-column justify-content-center ">
+        <h3 class="mt-4">Ce que propose ce logement</h3>
+        <div class="row">
+          <hr>
+          <div class="col-md-5">
+            @foreach ($appartement->characteristics as $characteristic )
+              @if ($characteristic->name == 'Baignoire' || $characteristic->name == 'Connexion Wi-Fi gratuite' || $characteristic->name == 'TV')
+                <p><i class="fa fa-fw {{ $characteristic->name == 'Baignoire' ? 'fa-shower' : ($characteristic->name == 'Connexion Wi-Fi gratuite' ? 'fa-wifi' : ($characteristic->name == 'TV' ? 'fa-tv' : '' )) }}"></i> {{ $characteristic->name }}</p>
+              @endif
+            @endforeach
+          </div>
+          <div class="col-md-6">
+            @foreach ($appartement->characteristics as $characteristic )
+              @if ($characteristic->name == 'Front de mer' || $characteristic->name == 'Terrasse' || $characteristic->name == 'Piscine extérieure' || $characteristic->name == 'Parking gratuit' || $characteristic->name == 'Vue sur le jardin')
+                <p><i class="fa fa-solid {{ $characteristic->name == 'Front de mer' ? 'fa-umbrella-beach' : ($characteristic->name == 'Terrasse' ? 'fa-building-circle-check' : ($characteristic->name == 'Piscine extérieure' ? 'fa-water-ladder' :( $characteristic->name == 'Parking gratuit' ? 'fa-square-parking' : ( $characteristic->name == 'Vue sur le jardin' ? 'fa-tree-city' : ''  )))) }}"></i> {{ $characteristic->name }}</p>
+              @endif
+            @endforeach
+          </div>
+          <hr>
+        </div>
+
+        </div>
+        <div class="col-md-5 col my-2  d-flex flex-column justify-content-center ">
           <div class=" d-flex flex-column  ">
-            <h1>{{$appartement->name}}</h1>
+         
+            <h3>a propos de cette appartement:</h3>
             <p>{{$appartement->description}}</p>
             <h2>Détails de l'appartement</h2>
             <ul>
-              <li>{{$appartement->person_nombre}}</li>
+              <li>Nombre de person :  {{$appartement->person_nombre}}</li>
               <li>Nombre de chambre : {{$appartement->no_chambre}} </li>
-              <li> space: {{$appartement->space}}</li>
-              <li><i class="fa-solid fa-location-dot"></i>  {{$appartement->localisation->city->name}},{{$appartement->localisation->localisation}}</li>
+              <li> space:  {{$appartement->space}} m<sup>2</sup></li>
+              <li><i class="fa-solid fa-location-dot"></i>  {{$appartement->localisation->city->name}} ,  {{$appartement->localisation->localisation}}</li>
             </ul>
             <h2>Prix</h2>
             <p>Le loyer journalier est de {{$appartement->prix}} MAD.</p>
@@ -30,23 +70,15 @@
             <div class="card border-0 col-md-10   rounded-4 bg-light shadow-lg rounded mt-5">
               <div class="card-body">
                 <h2>Réserver maintenant</h2>
-                <form>
+                <form   method="POST" action="{{route('reservation.store' ,$appartement->id)}}">
+                  @csrf
                   <div class="form-group my-3">
                     <label for="checkin">Date d'arrivée:</label>
-                    <input type="date" class="form-control" id="checkin">
+                    <input type="date" class="form-control" name="start_date" id="checkin">
                   </div>
                   <div class="form-group my-3">
                     <label for="checkout">Date de départ:</label>
-                    <input type="date" class="form-control" id="checkout">
-                  </div>
-                  <div class="form-group my-3">
-                    <label for="guests">Nombre d'invités:</label>
-                    <select class="form-control" id="guests">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
+                    <input type="date" class="form-control" name="end_date" id="checkout">
                   </div>
                   <button type="submit" class="btn btn-primary">Réserver</button>
                 </form>
@@ -56,5 +88,5 @@
         </div>
       </div>
     </div>
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> 
   </body>

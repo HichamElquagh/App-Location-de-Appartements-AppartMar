@@ -25,6 +25,7 @@ class CaracteristicSeeder extends Seeder
             ['name'=>'Terrasse'],
             ['name'=>'Piscine extérieure'],
             ['name'=>'Front de mer'],
+            ['name'=>'TV'],
         ]);
     }
 }

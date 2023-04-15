@@ -35,12 +35,12 @@ Route::get('/contact', function () {
 Route::get('/a_propos', function () {
     return view('a_propos');
 });
-Route::get('/test', function () {
-    return view('dashboard');
-});
-Route::get('/properties', function () {
-    return view('properties');
-});
+// Route::get('/test', function () {
+//     return view('dashboard');
+// });
+// Route::get('/properties', function () {
+//     return view('properties');
+// });
 
 
 Route::middleware([
@@ -59,6 +59,7 @@ Route::controller(AppartementController::class)->group(function(){
 
 Route::controller(ReservationController::class)->group(function(){
     Route::get('/reservation','index')->name('reservation.index');
+    Route::post('/reserve/{id}','store')->name('reservation.store');
 });
 
 Route::controller(CharacteristicController::class)->group(function(){
@@ -67,7 +68,7 @@ Route::controller(CharacteristicController::class)->group(function(){
 });
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
-    Route::get('/','indexlanding');
+    Route::get('/','indexlanding')->name('home');
     Route::get('/propertiesssss/{id}','show')->name('propertie.show');
 });
 

@@ -29,7 +29,7 @@ class StoreAppartementRequest extends FormRequest
             'name_appartement'=>'required',
             'city'=>'required',
             'description'=>'required',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'prix'=>'required',
             'caracteristique'=>'required',
             'nombrePersonne'=>'required',

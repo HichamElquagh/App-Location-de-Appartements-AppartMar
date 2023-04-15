@@ -18,7 +18,7 @@
         <div class="d-lg-flex d-md-block justify-content-end w-25  ">
     @if (Route::has('login'))
                     @auth
-                            <a href="{{ route('dashboard') }}" class="items-navbar nav-link">Dashboard</a>
+                            <a href="{{ route('dashboard')}}" class="items-navbar nav-link">Dashboard</a>
                     @else
                             <a href="{{ route('login') }}" class="items-navbar nav-link">Log in</a>
                         @if (Route::has('register'))
