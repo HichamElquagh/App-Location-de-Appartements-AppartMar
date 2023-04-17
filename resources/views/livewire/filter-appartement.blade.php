@@ -20,12 +20,12 @@
                     </select>
                     </div>
                     <div class="border bg-light p-3 rounded mb-3">
-                        <form oninput="min.value=parseInt(minRange.value) +parseInt(maxRange.value)">
-                            <h5 class="mb-3" style="font-size: 18px;"><output id="min">0</output><strong><</strong> PRICE <strong><</strong><output id="max">0</output></h5>
-                            <label for="customRange3" class="form-label">Min Price</label>
-                            <input type="range" class="form-range" min="0" max="1000" step="1" id="minRange" >
-                            <label for="customRange3" class="form-label">Max Price</label>
-                            <input type="range" class="form-range" min="0" max="1000" step="1" id="maxRange">
+                        <form wire:submit.prevent>
+                            <h5 class="mb-3" style="font-size: 18px;"><output id="min">{{ $min_prix }}$</output><strong><</strong> PRICE <strong><</strong><output id="max">{{ $max_prix }}$</output></h5>
+                            <label for="minRange" class="form-label">Min Price</label>
+                            <input type="range" class="form-range" min="0" max="1000" step="1" id="minRange" wire:model="min_prix">
+                            <label for="maxRange" class="form-label">Max Price</label>
+                            <input type="range" class="form-range" min="0" max="1000" step="1" id="maxRange" wire:model="max_prix">
                         </form>
                       </div>
                     {{-- <div class="border bg-light p-3 rounded mb-3">

@@ -10,8 +10,7 @@
       <div class="navbar-nav w-100 justify-content-around">
         <div class="d-lg-flex d-md-block justify-content-around w-50 ">
         <a class=" items-navbar nav-link" aria-current="page" href="/">Home</a>
-        <a class="items-navbar nav-link" href="">Filter</a>
-        <a class="items-navbar nav-link" href="{{route('allproperties.index')}}">Properties</a>
+        <a class="items-navbar nav-link" href="{{route('allproperties.index')}}">Filter</a>
         <a class="items-navbar nav-link" href="contact">Contact</a>
         <a class="items-navbar nav-link" href="a_propos">A propos</a>
         </div>
