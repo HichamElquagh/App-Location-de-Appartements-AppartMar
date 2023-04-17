@@ -19,8 +19,13 @@ class AppartementSearch extends Component
     public function render()
     {
 
-        $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->where('name' ,'like' , '%' .$this->search. '%' )->paginate(6);
-        // return $allapartemnt;
+        $allapartemnt = Appartement::with('images')
+        ->with('characteristics')
+        ->with('city')
+        ->whereHas('city', function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        })
+        ->paginate(6);      // dd($allapartemnt);
 
         return view('livewire.appartement-search' , [
             'appartements'=>$allapartemnt,

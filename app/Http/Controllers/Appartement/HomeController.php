@@ -24,7 +24,7 @@ class HomeController extends Controller
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
      
-        $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+        $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->get();
         // return $allapartemnt;
         // return $allcities;
         // return $allapartemnt;
@@ -34,7 +34,7 @@ class HomeController extends Controller
         return view('All_Properties', [
             // 'persons' => $NombrePerson,
             // 'characteristics' => $allcharacteristic,
-            // 'cities'=>$allcities,
+            'cities'=>$allcities,
             'appartements'=>$allapartemnt,
         ]);
         
@@ -48,7 +48,7 @@ class HomeController extends Controller
             $allcities = Citie::all();
             $allcharacteristic = Characteristic::get();
 
-            $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+            $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->get();
             // return $allcities;
             // return $allapartemnt;
             // return $allapartemnt;
@@ -64,7 +64,16 @@ class HomeController extends Controller
     
     
         }
-    
+
+
+        // public function filterAppartement(Request $request){
+
+        //     $person = $request->nombrePersonne;
+        //     $Appartement = Appartement::where('person_nombre','=',$person)->get();
+        //     return view('All_Properties', [
+        //         'filterappartements'=>$Appartement,
+        //     ]);
+        // }    
 
     /**
      * Show the form for creating a new resource.
@@ -96,7 +105,7 @@ class HomeController extends Controller
     public function show($id)
     {
         //
-        $thisappartement = Appartement::with('images')->with('characteristics')->with('localisation.city')->find($id);
+        $thisappartement = Appartement::with('images')->with('characteristics')->with('city')->find($id);
         // return $thisappartement;
 
         return view('properties',[

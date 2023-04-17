@@ -70,6 +70,7 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
     Route::get('/','indexlanding')->name('home');
     Route::get('/propertiesssss/{id}','show')->name('propertie.show');
+    Route::post('/filter','filterAppartement')->name('filterAppartement');
 });
 
 

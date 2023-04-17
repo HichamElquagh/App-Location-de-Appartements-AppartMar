@@ -15,10 +15,10 @@ class Citie extends Model
         'city',
     ];
 
-    public function localisation(){
-        return $this->hasOne(Characteristic::class);
-    }
-
+   public function appartements(){
+   
+            return $this->hasMany(Appartement::class);          
+   }
     
 
 }

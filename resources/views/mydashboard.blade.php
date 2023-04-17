@@ -177,8 +177,8 @@
                                             
                                             <td>{{$appartement->name}}</td>
                                             <td>{{$appartement->status}}</td>
-                                            <td>{{$appartement->localisation->localisation}}</td>
-                                            <td>{{$appartement->localisation->city->name}}</td> 
+                                            <td>{{$appartement->address}}</td>
+                                            <td>{{$appartement->city->name}}</td> 
                                             <td>{{$appartement->description}}</td>
                                             <td>{{$appartement->person_nombre}}</td> 
                                             <td>{{$appartement->prix}}</td>

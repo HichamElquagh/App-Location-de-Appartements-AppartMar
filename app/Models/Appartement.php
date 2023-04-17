@@ -20,6 +20,8 @@ class Appartement extends Model
       'user_id',
       'person_nombre',
       'name',
+      'address',
+      'city_id',
       'description',
       'space',
       'caracteristique_id',
@@ -41,12 +43,10 @@ class Appartement extends Model
     public function images(){
       return $this->hasMany(Image::class);
     }
-    public function localisation(){
-      return $this->hasOne(Localisation::class);
-    }
-
-
     public function reservations(){
            return $this->hasMany(Reservation::class);
+    }
+    public function city(){
+      return $this->belongsTo(Citie::class);
     }
 }

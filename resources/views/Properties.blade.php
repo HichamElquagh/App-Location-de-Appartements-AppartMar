@@ -61,7 +61,7 @@
               <li>Nombre de person :  {{$appartement->person_nombre}}</li>
               <li>Nombre de chambre : {{$appartement->no_chambre}} </li>
               <li> space:  {{$appartement->space}} m<sup>2</sup></li>
-              <li><i class="fa-solid fa-location-dot"></i>  {{$appartement->localisation->city->name}} ,  {{$appartement->localisation->localisation}}</li>
+              <li><i class="fa-solid fa-location-dot"></i>  {{$appartement->city->name}} ,  {{$appartement->address}}</li>
             </ul>
             <h2>Prix</h2>
             <p>Le loyer journalier est de {{$appartement->prix}} MAD.</p>

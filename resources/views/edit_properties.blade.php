@@ -66,7 +66,7 @@
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="recipient-name" class="col-form-label">Adresse</label>
-                                                <input type="text" class="form-control" name="localisation" id="recipient-name" value="{{$appartement->localisation->localisation}}">
+                                                <input type="text" class="form-control" name="localisation" id="recipient-name" value="{{$appartement->address}}">
                                               </div>
                                         </div>
         

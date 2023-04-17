@@ -25,7 +25,7 @@
                 @endforeach;
                 <div class="card-body text-center">
                   <h5 class="card-title fw-bold text-dark">{{$appartement->name}}</h5>
-                  <p class="mb-2 items-center text-dark" ><i class="fa-solid fa-location-dot"></i>  {{$appartement->localisation->city->name}},{{$appartement->localisation->localisation}}</p>
+                  <p class="mb-2 items-center text-dark" ><i class="fa-solid fa-location-dot"></i>  {{$appartement->city->name}},{{$appartement->address}}</p>
                   <p class="card-text text-success">MAD{{$appartement->prix}}</p>
                   <hr class="my-1" />
                   <p class="fw-bold text-dark">Status : {{$appartement->status}}</p>

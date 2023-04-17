@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Appartement;
 
 use App\Models\Appartement;
 use App\Models\Image;
-use App\Models\Localisation;
 use App\Models\Characteristic;
 use App\Models\Citie;
 use Illuminate\Support\Str;
@@ -28,7 +27,7 @@ class AppartementController extends Controller
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
         // $NombrePerson = Person::get();
-        $allapartemnt = Appartement::with('images')->with('characteristics')->with('localisation.city')->get();
+        $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->get();
         // return $allcities;
         // return $allapartemnt;
         // return $allapartemnt->localisation;
@@ -70,6 +69,8 @@ class AppartementController extends Controller
                 'person_nombre' => $request->nombrePersonne,
                 'name'=>$request->name_appartement,
                 'description' => $request->description,
+                'address'=>$request->localisation,
+                'city_id'=>$request->city,
                 'space' => $request->espaces,
                 'no_chambre' => $request->nombreChambre,
                 'prix' => $request->prix,
@@ -79,14 +80,14 @@ class AppartementController extends Controller
             $id = $newAppartement->id;
             $images = [];
         
-                // foreach ($request->file('images') as $image) {
-                //     $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
-                //     $image->storeAs('image', $filename, 'public');
-                //     Image::insert([
-                //         'appartement_id' => $id,
-                //         'image' => $filename,
-                //     ]);
-                // }
+                foreach ($request->file('images') as $image) {
+                    $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('image', $filename, 'public');
+                    Image::insert([
+                        'appartement_id' => $id,
+                        'image' => $filename,
+                    ]);
+                }
             
         
             // $id = $newAppartement->id;
@@ -99,11 +100,11 @@ class AppartementController extends Controller
             // }
      
        
-        Localisation::create([
-            'appartement_id'=>$id,
-            'localisation'=>$request->localisation,
-            'city_id'=>$request->city,
-        ]);
+        // Localisation::create([
+        //     'appartement_id'=>$id,
+        //     'localisation'=>,
+        //     'city_id'=>$request->city,
+        // ]);
 
 
 
@@ -145,13 +146,13 @@ class AppartementController extends Controller
     {    
          $allcities = Citie::all();
          $allcharacteristic = Characteristic::get();
-        $thisappartement = Appartement::with('images')->with('characteristics')->with('localisation.city')->find($id);
+        $thisappartement = Appartement::with('images')->with('characteristics')->with('city')->find($id);
     //    return $thisappartement->characteristics;
     foreach($thisappartement->characteristics as $characteristic){
 
         $selectedCharacteristics[] = $characteristic->id;
     }
-    $thiscity[] = $thisappartement->localisation->city->id;
+    $thiscity[] = $thisappartement->city->id;
     // return $selectedCharacteristics;
          return view('edit_properties',[
             'appartement'=>$thisappartement,
@@ -183,6 +184,8 @@ class AppartementController extends Controller
         'person_nombre' => $request->nombrePersonne,
         'name'=>$request->name_appartement,
         'description' => $request->description,
+        'address'=>$request->localisation,
+        'city_id'=>$request->city,
         'space' => $request->espaces,
         'no_chambre' => $request->nombreChambre,
         'prix' => $request->prix,
@@ -202,10 +205,10 @@ class AppartementController extends Controller
     }
    }
     // update the $appartement's localisation
-    $appartement->localisation->update([
-        'localisation' => $request->localisation,
-        'city_id' => $request->city,
-    ]);
+    // $appartement->localisation->update([
+    //     'localisation' => $request->localisation,
+    //     'city_id' => $request->city,
+    // ]);
 
     // update the $appartement's characteristics
     $characteristics = $request->input('characteristics');

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('person_nombre');
             $table->text('name');
             $table->text('description');
+            $table->text('address');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('space');
             $table->integer('no_chambre');
             $table->float('prix');
