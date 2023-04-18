@@ -69,18 +69,29 @@
           <div>
             <div class="card border-0 col-md-10   rounded-4 bg-light shadow-lg rounded mt-5">
               <div class="card-body">
+                @if ($message = Session::get('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif 
                 <h2>Réserver maintenant</h2>
+               
+              
+                {{-- <h4>Status : {{$appartement->status}}</h4> --}}
                 <form   method="POST" action="{{route('reservation.store' ,$appartement->id)}}">
                   @csrf
                   <div class="form-group my-3">
                     <label for="checkin">Date d'arrivée:</label>
-                    <input type="date" class="form-control" name="start_date" id="checkin">
+                    <input type="date" class="form-control   @error('start_date') is-invalid @enderror" name="start_date" id="checkin">
                   </div>
                   <div class="form-group my-3">
                     <label for="checkout">Date de départ:</label>
-                    <input type="date" class="form-control" name="end_date" id="checkout">
+                    <input type="date" class="form-control  @error('end_date') is-invalid @enderror"  name="end_date" id="checkout">
                   </div>
-                  <button type="submit" class="btn btn-primary">Réserver</button>
+                  {{-- @if ($appartement->status  == 'Disponible' )  --}}
+                  <button type="submit" class="btn btn-primary reserve-btn" >Réserver</button>
+                  {{-- @endif  --}}
                 </form>
               </div>
             </div>

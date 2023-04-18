@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('appartement_id')->references('id')->on('appartements');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('status')->default(false);
             $table->date('date_debut');
             $table->date('date_fin');
             $table->timestamps();

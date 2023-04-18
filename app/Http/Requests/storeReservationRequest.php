@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ReservationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class storeReservationRequest extends FormRequest
@@ -24,9 +25,9 @@ class storeReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'date_debut'=>'',
-            'date_fin'=>'',
+            'start_date'=>'required',
+            'end_date'=>'required',
         ];
     }
-}
+
+    }

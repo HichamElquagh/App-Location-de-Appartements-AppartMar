@@ -21,10 +21,10 @@ events: [
   @foreach ($reservations as $reservation)
     
     {
-      title: '{{$reservation->user->name}}',
+      title: '{{$reservation->user->name}}  {{ "Tel : " .$reservation->user->phone }} ',
       start: '{{$reservation->date_debut}}',
       end: '{{$reservation->date_fin}}',
-      url:''
+      url:'{{route("checkreservation",$reservation->id)}}'
     },
   @endforeach
   ],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ElementAppartement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeReservationRequest;
+use App\Models\Appartement;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,17 +43,73 @@ class ReservationController extends Controller
     public function store(storeReservationRequest $request , $id)
     {
         //
+        
+        if($request->start_date<now()){
+            return redirect()->back()->with('success', ' ');}
+
+        //
         $user_id = Auth()->user()->id;
         $appartement_id = $id;
+        $lastreservation =  Reservation::where('appartement_id', $id)
+        ->where('date_debut', '>', now())
+        ->where('status', 0)
+        ->whereBetween('date_debut', [$request->start_date, $request->end_date])
+        ->orWhereBetween('date_fin', [$request->start_date, $request->end_date])
+        ->first();
+        
+        if($lastreservation){
 
-        Reservation::create([
-            'appartement_id'=>$appartement_id,
-            'user_id'=>$user_id,
-            'date_debut'=>$request->start_date,
-            'date_fin'=>$request->end_date,
-        ]);
+            return redirect()->back()->with('success',"Appartement Has benn reserved between $lastreservation->date_debut and $lastreservation->date_fin");
 
-        return redirect()->route('reservation.index');
+        }
+        else { 
+                 Reservation::create([
+                    'appartement_id'=>$appartement_id,
+                    'user_id'=>$user_id,
+                    'date_debut'=>$request->start_date,
+                    'date_fin'=>$request->end_date,
+                    ]
+                );
+                return redirect()->back()->with('success'," Appartement reserved Successfully   ");
+
+        }
+
+       
+        //  $last_start_reservation = $lastreservation->date_debut;
+        //  $last_end_reservation = $lastreservation->date_fin;
+         
+        // $user_id = Auth()->user()->id;
+        // $appartement_id = $id;
+        // $lastreservation =  Reservation::where('appartement_id', $id)
+        // ->where('status', 0)
+        // ->orderBy('date_fin', 'desc')
+        // ->first();
+        
+       
+        //  $last_start_reservation = $lastreservation->date_debut;
+        //  $last_end_reservation = $lastreservation->date_fin;
+     
+
+        //   dd($lastreservation); 
+
+            
+
+            // if(  ){
+
+            //     Reservation::create([
+            //         'appartement_id'=>$appartement_id,
+            //         'user_id'=>$user_id,
+            //         'date_debut'=>$request->start_date,
+            //         'date_fin'=>$request->end_date,
+            //         ]
+            //     );
+            // }
+    //  $appartement = Appartement::find($id);
+    //  $appartement->update([
+    //     'status' => 'Loué',
+    // ]);
+
+       return redirect()->back()->with('success','Appartement reserved successfully');
 
 
         

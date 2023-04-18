@@ -12,7 +12,7 @@ class Image extends Model
     protected $fillable =[
 
         'id',
-        'appartement_id	',
+        'appartement_id',
         'image',
 
     ];

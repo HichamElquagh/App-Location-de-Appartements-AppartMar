@@ -13,8 +13,8 @@ class FilterAppartement extends Component
     public $person_nombre;
     public $city;
     public $chambre_nombre;
-    public $max_prix; 
-    public $min_prix ; 
+    public $max_prix =0; 
+    public $min_prix =0; 
 
 
     //   public function updateNombrePersonne($value)
@@ -27,7 +27,7 @@ class FilterAppartement extends Component
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
         $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->when($this->person_nombre)->where('person_nombre',$this->person_nombre)
-        ->when($this->city)->where('city_id',$this->city)->when($this->chambre_nombre)->where('no_chambre',$this->chambre_nombre)->when($this->min_prix && $this->max_prix)->whereBetween('prix',[$this->min_prix,$this->max_prix])->get();
+        ->when($this->city)->where('city_id',$this->city)->when($this->chambre_nombre)->where('no_chambre',$this->chambre_nombre)->when($this->min_prix ||  $this->max_prix)->whereBetween('prix',[$this->min_prix,$this->max_prix])->get();
         // if($this->min_prix){ 
         // dd($this->min_prix);}
         // return $allapartemnt;

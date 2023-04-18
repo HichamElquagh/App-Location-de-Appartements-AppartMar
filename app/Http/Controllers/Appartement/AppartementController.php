@@ -78,16 +78,22 @@ class AppartementController extends Controller
                 'status' => $status, 
             ]);
             $id = $newAppartement->id;
-            $images = [];
-        
-                foreach ($request->file('images') as $image) {
-                    $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
-                    $image->storeAs('image', $filename, 'public');
-                    Image::insert([
-                        'appartement_id' => $id,
-                        'image' => $filename,
-                    ]);
-                }
+            // $images = [];
+            
+            $imageData = [];
+            foreach ($request->file('images') as $image) {
+                $filename =  Str::uuid()->toString(). '.' . $image->getClientOriginalExtension();
+                $path = $image->storeAs('image', $filename, 'public');
+                $imageData[] = [
+                    'appartement_id' => $id,
+                    'image' => $filename,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ];
+            }
+            
+            Image::insert($imageData);
+            
             
         
             // $id = $newAppartement->id;
