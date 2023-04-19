@@ -56,6 +56,11 @@ Route::controller(AppartementController::class)->group(function(){
     Route::put('/propertiess/{id}','update')->name('properties.update');
     Route::delete('/propertie','destroy')->name('properties.destroy');
 });
+Route::controller(CharacteristicController::class)->group(function(){
+    Route::get('characteristics','index')->name('characteristic.index');
+    Route::post('characteristic','store')->name('characteristic.store');
+    Route::delete('/delete/characteristic','destroy')->name('characteristic.destroy');
+});
 
 Route::controller(ReservationController::class)->group(function(){
     Route::get('/reservation','index')->name('reservation.index');

@@ -265,4 +265,8 @@ a.article:hover {
     background-color: #dc3545;
     border-color: #dc3545;
   }
-  
+    /* Fullcalender */
+    .calender{
+        width: 70% !important ;
+        height: 90vh !important;
+    }

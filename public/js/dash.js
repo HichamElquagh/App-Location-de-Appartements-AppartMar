@@ -18,3 +18,7 @@ function remove_appart(id){
     var delete_id_input = document.getElementById("appar-delete-id");
     delete_id_input.value = id;
 }
+function remove_chara(id){
+    var chara_id_input = document.getElementById("chara-delete-id");
+    chara_id_input.value = id;
+}

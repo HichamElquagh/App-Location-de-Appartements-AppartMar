@@ -16,8 +16,11 @@ class CharacteristicController extends Controller
     public function index()
     {
         //
+        $characteristic = Characteristic::get();
        
-      return view('characteristic');
+      return view('characteristic',[
+        'characteristics' => $characteristic,
+      ]);
 
     }
 
@@ -39,13 +42,12 @@ class CharacteristicController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $characteristique = $request->caracteristic;
-        // return $characteristique;
-        // Characteristic::create([
-        //     'name'=>characteristique,
-        // ]);
-        // return route();
+        // 
+        Characteristic::create([
+            'name'=>$request->characteristic,
+        ]);
+
+        return redirect()->route('characteristic.index');
 
         
     }
@@ -90,8 +92,13 @@ class CharacteristicController extends Controller
      * @param  \App\Models\Characteristic  $characteristic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Characteristic $characteristic)
+    public function destroy(Request $request)
+
     {
         //
+        $id = $request->id;
+        Characteristic::find($id)->delete();
+        return redirect()->route('characteristic.index')->with('success','Appartement has been deleted successfully');
+
     }
 }
