@@ -14,6 +14,7 @@ class Reservation extends Model
         'id',
         'appartement_id',
         'user_id',
+        'status',
         'date_debut',
         'date_fin',
 

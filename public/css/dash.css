@@ -189,7 +189,7 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
-}
+} 
 
 
 
@@ -203,7 +203,66 @@ a.article:hover {
     height: 10rem !important;
 }
 
+/* .container-reservation{
+    /* width: 100vw !important; */
+    /* background:rgb(243,244,246) !important; */
 
-
-
-
+.ticket {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  
+  .ticket-header {
+    background-color: #f1f1f1;
+    padding: 20px;
+  }
+  
+  .ticket-title {
+    margin: 0;
+  }
+  
+  .ticket-body {
+    padding: 20px;
+  }
+  
+  .ticket-info {
+    margin-bottom: 20px;
+  }
+  
+  .ticket-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-label {
+    font-weight: bold;
+    flex: 1;
+  }
+  
+  .ticket-value {
+    flex: 2;
+  }
+  
+  .ticket-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn {
+    margin-right: 10px;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  

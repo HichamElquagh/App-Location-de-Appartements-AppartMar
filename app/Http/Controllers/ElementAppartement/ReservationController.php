@@ -43,16 +43,13 @@ class ReservationController extends Controller
     public function store(storeReservationRequest $request , $id)
     {
         //
-        
-        if($request->start_date<now()){
-            return redirect()->back()->with('success', ' ');}
-
+       
         //
         $user_id = Auth()->user()->id;
         $appartement_id = $id;
         $lastreservation =  Reservation::where('appartement_id', $id)
         ->where('date_debut', '>', now())
-        ->where('status', 0)
+        ->where('status', 1)
         ->whereBetween('date_debut', [$request->start_date, $request->end_date])
         ->orWhereBetween('date_fin', [$request->start_date, $request->end_date])
         ->first();
@@ -70,7 +67,7 @@ class ReservationController extends Controller
                     'date_fin'=>$request->end_date,
                     ]
                 );
-                return redirect()->back()->with('success'," Appartement reserved Successfully   ");
+                return redirect()->back()->with('error',"Appartement reserved Successfully");
 
         }
 
@@ -125,6 +122,38 @@ class ReservationController extends Controller
     public function show($id)
     {
         //
+        $reservation = Reservation::with('user')->find($id);
+        // return $reservation ;
+
+        return view('check_reservation', [
+          'reservation'=> $reservation,
+        ]);
+
+
+    }
+
+    public function validation_reservation(Request $request , $id){
+
+        // return $id;
+     
+            // Check if the "Confirmer" button was clicked
+            if ($request->has('confirmer')) {
+                $reservation = Reservation::find($id);
+                // dd($reservation);
+                $reservation->update([
+                  'status' => 1 ,
+                ]);
+                return redirect()->back()->with('success',"Reservation  Has benn Confirmed ");   } 
+            else {
+                $reservation = Reservation::find($id);
+                $reservation->update([
+                  'status' => 2 ,
+                ]);
+                return redirect()->back()->with('erreur',"Reservation  Has benn Canceled ");
+            }
+        
+        
+        //    return r
     }
 
     /**

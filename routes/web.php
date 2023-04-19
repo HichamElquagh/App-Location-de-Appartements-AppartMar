@@ -60,7 +60,8 @@ Route::controller(AppartementController::class)->group(function(){
 Route::controller(ReservationController::class)->group(function(){
     Route::get('/reservation','index')->name('reservation.index');
     Route::post('/reserve/{id}','store')->name('reservation.store');
-    // Route::post('/check/{id}','show')->name('checkreservation');
+    Route::get('/check/{id}','show')->name('checkreservation');
+    Route::get('/validate/{id}','validation_reservation')->name('validation_reservation');
 });
 
 Route::controller(CharacteristicController::class)->group(function(){

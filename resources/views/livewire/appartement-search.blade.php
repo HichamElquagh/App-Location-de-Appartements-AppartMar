@@ -18,7 +18,7 @@
         <div class="row mx-auto ">
             @foreach($appartements as $appartement)
             <div class="col-md-6 col-lg-4 p-2 col-12" href="#modal-meal" data-bs-toggle="modal" >
-                <div class="card border-0 rounded-4 bg-light  shadow-lg  rounded">
+                <div class="card border-0 rounded-4 bg-light shadow-lg  rounded">
                   @foreach ($appartement->images as $image)
                 <a href="{{route('propertie.show', $appartement->id)}}"><img src="{{asset('storage/image/'.$image->image)}}" class="card-img-top" > </a> 
                 @break
