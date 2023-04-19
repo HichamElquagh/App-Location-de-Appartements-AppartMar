@@ -162,7 +162,7 @@
                         </div>
                         <div class="my-5">
                         <button type="submit" class="btn btn-primary buttonedit ml-2">Update</button>
-                        <button type="button" class="btn btn-primary buttonedit">Cancel</button>
+                        <button type="button" class="btn btn-primary buttonedit"><a href="{{ route('dashboard')}}">Cancel</a></button>
                     </div>
                     </div>
                     </form>

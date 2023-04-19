@@ -154,18 +154,13 @@
                                                 <div class="modal-content">
                                                  
                                                   <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Images </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                   </div>
                                                   <div class="modal-body">
                                                     @foreach ($appartement->images as $image)
-                                                    <img src="{{asset('storage/image/'.$image->image)}}" alt="" srcset="">
+                                                    <img class="my-2" src="{{asset('storage/image/'.$image->image)}}" alt="" srcset="">
                                                     @endforeach
-                                                    ...
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                   </div>
                                                 </div>
                                               </div>
@@ -323,7 +318,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="{{asset('js\dash.js')}}"></script>
-{{-- rechrche citei--}}
+{{-- rechrche cite--}}
 
  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>       
