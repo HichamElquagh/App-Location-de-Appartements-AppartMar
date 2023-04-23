@@ -1,18 +1,4 @@
-// window.addEventListener('DOMContentLoaded', event => {
 
-//     Toggle the side navigation
-//     const sidebarToggle = document.body.querySelector('#sidebarToggle');
-//     if (sidebarToggle) {
-//         Uncomment Below to persist sidebar toggle between refreshes
-//         if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-//             document.body.classList.toggle('sb-sidenav-toggled');
-//         }
-//         sidebarToggle.addEventListener('click', event => {
-//             event.preventDefault();
-//             document.body.classList.toggle('sb-sidenav-toggled');
-//             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-//         });
-//     }
 
 function remove_appart(id){
     var delete_id_input = document.getElementById("appar-delete-id");
@@ -21,4 +7,34 @@ function remove_appart(id){
 function remove_chara(id){
     var chara_id_input = document.getElementById("chara-delete-id");
     chara_id_input.value = id;
+}
+
+function edit(id){
+    console.log(id);
+    $.ajax({
+        url:'/characteristic.edit/'+ id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            // console.log(data)
+            $('#exampleModalLabel').text('Edit Characteristic');
+            $('#update_btn').text('Update');
+            $('form').attr('action', 'characteristic.update/' + data.id);
+            // $("input[name='_method']").val("PUT");
+            $('input[name="characteristic"]').val(data.name);
+            // $('input[name="characteristic_id"]').val(data.id);
+            $('#exampleModal').modal('show');
+        }
+    });
+}
+function addChra(){
+
+
+     $('#exampleModalLabel').text('Add Characteristic');
+     $('form').attr('action', 'characteristic.store');
+     $('#update_btn').text('Save');
+     $("input[name='_method']").val("POST");
+
+
+
 }

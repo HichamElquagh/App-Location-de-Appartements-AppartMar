@@ -58,9 +58,9 @@ class CharacteristicController extends Controller
      * @param  \App\Models\Characteristic  $characteristic
      * @return \Illuminate\Http\Response
      */
-    public function show(Characteristic $characteristic)
+    public function show()
     {
-        //
+      
     }
 
     /**
@@ -69,9 +69,11 @@ class CharacteristicController extends Controller
      * @param  \App\Models\Characteristic  $characteristic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Characteristic $characteristic)
+    public function edit($id)
     {
-        //
+        $characteristic= Characteristic::find($id);
+        return response()->json($characteristic);
+
     }
 
     /**
@@ -81,9 +83,16 @@ class CharacteristicController extends Controller
      * @param  \App\Models\Characteristic  $characteristic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Characteristic $characteristic)
+    public function update(Request $request,$id)
     {
         //
+        // return $id;
+        $characteristic = Characteristic::find($id);
+        $characteristic->update([
+            'name'=> $request->characteristic,
+
+        ]);
+        return redirect()->route('characteristic.index');
     }
 
     /**

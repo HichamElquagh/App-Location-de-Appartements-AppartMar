@@ -58,7 +58,9 @@ Route::controller(AppartementController::class)->middleware((['auth']))->group(f
 });
 Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
     Route::get('characteristics','index')->name('characteristic.index');
-    Route::post('characteristic','store')->name('characteristic.store');
+    Route::post('characteristic.store','store')->name('characteristic.store');
+    Route::get('/characteristic.edit/{id}','edit')->name('characteristic.edit');
+    Route::put('characteristic.update/{id}','update')->name('characteristic.update');
     Route::delete('/delete/characteristic','destroy')->name('characteristic.destroy');
 });
 
@@ -69,10 +71,11 @@ Route::controller(CharacteristicController::class)->middleware((['auth']))->grou
     Route::get('/validate/{id}','validation_reservation')->name('validation_reservation');
 });
 
-Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
-    Route::post('/characteristicss','store')->name('characteristic.store');
-    Route::get('/characteristics','index')->name('characteristic.index');
-});
+// Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
+//     Route::post('/characteristicss','store')->name('characteristic.store');
+//     Route::get('/characteristics','index')->name('characteristic.index');
+//     Route::get('/characteristic/{id}','show')->name('characteristic');
+// });
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
     Route::get('/','indexlanding')->name('home');

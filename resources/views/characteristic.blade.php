@@ -7,7 +7,7 @@
     <div class="bg-light rounded  h-100 p-4">
         <div class=" d-flex justify-content-between ">
             <div><h6 class="mb-4">characteristic</h6></div>
-            <div><button type="button" class="btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">add characteristic</button></div>
+            <div><button type="button" class="btn btn-dark mb-3" onclick="addChra()" data-bs-toggle="modal" data-bs-target="#exampleModal">add characteristic</button></div>
         </div>
         <div class="table-responsive">
             <table class="table  table-striped">
@@ -22,8 +22,8 @@
                     <tr>
                         <th scope="row">1</th>
                         <td>{{ $characteristic->name}}</td>
+                        <td> <button type="submit" onclick="edit('{{$characteristic->id}}')"><i class="fa-solid fa-pen-to-square"></i></button></td>
                         <form action="" method="POST">
-                            <td><a href=""><i class="fa-solid fa-pen-to-square"></i></td></a>
                              @csrf
                              @method('DELETE')
                             </form>
@@ -40,7 +40,8 @@
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form action="{{route('characteristic.store')}}" method="post">
-        @csrf
+      @method('PUT')
+              @csrf
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,12 +52,12 @@
             <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Characteristic</label>
                 <input type="text" class="form-control" name="characteristic" id="recipient-name">
-
               </div>
+              {{-- <input type="hidden" class="form-control" name="characteristic_id" id="recipient-name"> --}}
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="submit"  class="btn btn-success" id="update_btn">Save</button>
         </div>
       </div>
     </div>
@@ -88,7 +89,9 @@
           </form>
         </div>
     </div>
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{{asset('js\dash.js')}}"></script>
 </x-slot>
 
