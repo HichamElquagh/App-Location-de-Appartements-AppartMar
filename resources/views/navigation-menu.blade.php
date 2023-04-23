@@ -19,9 +19,11 @@
                     <x-nav-link href="{{ route('reservation.index') }}" :active="request()->routeIs('reservation.index')">
                         {{ ('Reservation') }}
                     </x-nav-link>
+                    @if(Auth::user()->hasRole('admin'))
                     <x-nav-link href="{{ route('characteristic.index') }}" :active="request()->routeIs('characteristic.index')">
-                        {{ ('Characteristic') }}
+                      {{ ('Characteristic') }}
                     </x-nav-link>
+                  @endif
                     <x-nav-link href="{{route('home')}}" :active="request()->routeIs('/')">
                         {{ __('Home') }}
                     </x-nav-link> 
