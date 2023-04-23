@@ -26,19 +26,21 @@ class AppartementController extends Controller
         //
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
-        // $NombrePerson = Person::get();
-        $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->get();
-        // return $allcities;
-        // return $allapartemnt;
-        // return $allapartemnt->localisation;
+        $user= Auth()->user();
+
+        if($user->can('view all appartement')){
+            $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->get();
+            
+        } 
+        else{
+        $allapartemnt = Appartement::with('images')->with('characteristics')->with('city')->where('user_id',$user->id)->get();
+        }
         return view('mydashboard', [
-            // 'persons' => $NombrePerson,
             'characteristics' => $allcharacteristic,
             'cities'=>$allcities,
             'appartements'=>$allapartemnt,
         ]);
-        
-        // return $allapartemnt;
+    
     }
 
     /**
@@ -138,6 +140,7 @@ class AppartementController extends Controller
     public function show()
     {
         //
+
        
 
     }

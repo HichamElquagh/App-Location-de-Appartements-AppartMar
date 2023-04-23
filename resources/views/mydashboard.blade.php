@@ -14,7 +14,7 @@
           <div class=" d-flex justify-content-end ">
             <div class=""><button type="button" class=" proper-btn btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add properites</button></div>
         </div>
-         
+                    
                       <!-- statistique card -->
                       <div class="body-stats">
                         <div class="main-content">
@@ -207,7 +207,7 @@
                                             </form>
                                              <td><button type="button"    onclick="remove_appart('{{ $appartement->id }}')"class="" data-bs-toggle="modal"  data-bs-target="#deletemodal" data-bs-whatever="@mdo"> <i class="fa-solid fa-trash"></i></button></td>
                                         </tr>
-                                      @endforeach;
+                                      @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -238,7 +238,7 @@
         <select class="form-select" aria-label="Default select example" name="city">
             @foreach($cities as $city)
               <option value="{{$city->id}}">{{$city->name}}</option>  
-              @endforeach;  
+              @endforeach
         </select>
         
           <div class="mb-3">
@@ -262,7 +262,7 @@
             <select class="form-select" aria-label="Default select example" name="caracteristique[]" id="tags" multiple>
                 @foreach($characteristics as $characteristic)
                 <option value="{{$characteristic->id}}">{{$characteristic->name}}</option>  
-                @endforeach; 
+                @endforeach
             </select>
             <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nombre de Chambre</label>

@@ -49,27 +49,27 @@ Route::middleware([
     'verified'
 ]);
 
-Route::controller(AppartementController::class)->group(function(){
+Route::controller(AppartementController::class)->middleware((['auth']))->group(function(){
     Route::post('/appartementt','store')->name('appartement.store');
-    Route::get('/dashboardd','index')->name('dashboard');
-    Route::get('properties/{id}','edit')->name('properties.edit');
+    Route::get('/dashboardd','index')->name('dashboard')->middleware(['permission:view my appartement|view all appartement']);
+    Route::get('properties/{id}','edit')->name('properties.edit')->middleware(['permission:view my appartement|view all appartement']);
     Route::put('/propertiess/{id}','update')->name('properties.update');
     Route::delete('/propertie','destroy')->name('properties.destroy');
 });
-Route::controller(CharacteristicController::class)->group(function(){
+Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
     Route::get('characteristics','index')->name('characteristic.index');
     Route::post('characteristic','store')->name('characteristic.store');
     Route::delete('/delete/characteristic','destroy')->name('characteristic.destroy');
 });
 
-Route::controller(ReservationController::class)->group(function(){
-    Route::get('/reservation','index')->name('reservation.index');
+ Route::controller(ReservationController::class)->middleware((['auth']))->group(function(){
+    Route::get('/reservation','index')->name('reservation.index')->middleware(['permission:view my reservation|view all reservation']);
     Route::post('/reserve/{id}','store')->name('reservation.store');
     Route::get('/check/{id}','show')->name('checkreservation');
     Route::get('/validate/{id}','validation_reservation')->name('validation_reservation');
 });
 
-Route::controller(CharacteristicController::class)->group(function(){
+Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
     Route::post('/characteristicss','store')->name('characteristic.store');
     Route::get('/characteristics','index')->name('characteristic.index');
 });

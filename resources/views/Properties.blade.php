@@ -76,7 +76,7 @@
               </div>
               @endif 
               @if ($message = Session::get('error'))
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>{{ $message }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
@@ -89,13 +89,13 @@
                   @csrf
                   <div class="form-group my-3">
                     <label for="checkin">Date d'arrivée:</label>
-                    <input type="date" class="form-control   @error('start_date') is-invalid @enderror" name="start_date" id="checkin">
-                    @error('start_date') {{$message}} @enderror 
+                    <input type="date" class="form-control " name="start_date" id="checkin">
+                    @error('start_date') <p class="text-danger">{{ $message }}</p> @enderror 
                   </div>
                   <div class="form-group my-3">
                     <label for="checkout">Date de départ:</label>
-                    <input type="date" class="form-control  @error('end_date') is-invalid @enderror"  name="end_date" id="checkout">
-                    @error('start_date') {{$message}} @enderror 
+                    <input type="date" class="form-control "  name="end_date" id="checkout">
+                    @error('start_date') <p class="text-danger">{{ $message }}</p> @enderror 
                   </div>
                   {{-- @if ($appartement->status  == 'Disponible' )  --}}
                   <button type="submit" class="btn btn-primary reserve-btn" >Réserver</button>

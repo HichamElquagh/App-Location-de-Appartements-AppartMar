@@ -29,6 +29,14 @@
                       <div class="ticket-value">{{$reservation->user->name}}</div>
                     </div>
                     <div class="ticket-row">
+                      <div class="ticket-label">appartement :</div>
+                      <div class="ticket-value">{{$reservation->appartement->name}}</div>
+                    </div>
+                    <div class="ticket-row">
+                      <div class="ticket-label">address :</div>
+                      <div class="ticket-value">{{$reservation->appartement->city->name}} , {{$reservation->appartement->address}}</div>
+                    </div>
+                    <div class="ticket-row">
                       <div class="ticket-label">Téléphone :</div>
                       <div class="ticket-value"> {{$reservation->user->phone}}</div>
                     </div>

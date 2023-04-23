@@ -37,6 +37,7 @@ class StoreAppartementRequest extends FormRequest
             'espaces'=>'required',
             'date'=>'required'
             
+            
         ];
     }
 }

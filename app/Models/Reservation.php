@@ -23,7 +23,7 @@ class Reservation extends Model
 
 
     public function appartement(){
-        return $this->belongsTo(Reservation::class);
+        return $this->belongsTo(appartement::class);
     }
 
     public function user(){

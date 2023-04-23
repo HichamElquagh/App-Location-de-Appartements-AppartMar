@@ -49,4 +49,8 @@ class Appartement extends Model
     public function city(){
       return $this->belongsTo(Citie::class);
     }
+
+    public function user(){
+      return $this->hasMany(User::class);
+  }
 }

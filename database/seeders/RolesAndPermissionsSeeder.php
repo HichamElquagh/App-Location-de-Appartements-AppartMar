@@ -29,7 +29,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         Role::create(['name' =>'admin'])->givePermissionTo(Permission::all());
         // or may be done by chaining
-        Role::create(['name' =>'user'])->givePermissionTo(['view my appartement','edit my appartement','delete my appartement']);
+        Role::create(['name' =>'user'])->givePermissionTo(['view my appartement','edit my appartement','delete my appartement','view my reservation']);
 
     }
 }

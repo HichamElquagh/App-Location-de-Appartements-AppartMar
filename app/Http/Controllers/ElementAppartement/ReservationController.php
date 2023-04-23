@@ -18,10 +18,23 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
-         $reservation = Reservation::with('user')->get();
-        return view('reservation' , ['reservations'=>$reservation] 
-    );
+        // 
+        // return Auth()->user();
+            if( Auth()->user()->can('view all reservation')){
+                $reservation = Reservation::with('appartement','user');
+                return view('reservation' , ['reservations'=>$reservation] );
+            }
+            else {
+             $reservation = Reservation::with('user', 'appartement')
+            ->whereHas('appartement', function ($query) {
+                $query->where('user_id', Auth()->user()->id);
+            })
+    ->get();
+        //  return $reservation;
+        return view('reservation' , ['reservations'=>$reservation]);
+        }
+       
+        
     }
 
     /**
@@ -47,29 +60,49 @@ class ReservationController extends Controller
         //
         $user_id = Auth()->user()->id;
         $appartement_id = $id;
-        $lastreservation =  Reservation::where('appartement_id', $id)
-        ->where('date_debut', '>', now())
+        // return $id;
+        $lastreservation =  Reservation::where('appartement_id', $appartement_id)
         ->where('status', 1)
-        ->whereBetween('date_debut', [$request->start_date, $request->end_date])
-        ->orWhereBetween('date_fin', [$request->start_date, $request->end_date])
+        ->orderBy('id', 'DESC')
         ->first();
-        
-        if($lastreservation){
-
-            return redirect()->back()->with('success',"Appartement Has benn reserved between $lastreservation->date_debut and $lastreservation->date_fin");
-
-        }
-        else { 
-                 Reservation::create([
+            
+            if ($lastreservation) {
+            $overlap = Reservation::where('id', $lastreservation->id)
+            ->where(function ($query) use ($request) {
+            $query->where('date_debut', '>', now())
+            ->whereBetween('date_debut', [$request->start_date, $request->end_date])
+            ->orWhereBetween('date_fin', [$request->start_date, $request->end_date]);
+            })
+            ->first();
+            // return $overlap;
+            if($overlap){
+                return redirect()->back()->with('error',"reserve blasa");
+            }else{
+                Reservation::create([
                     'appartement_id'=>$appartement_id,
                     'user_id'=>$user_id,
                     'date_debut'=>$request->start_date,
                     'date_fin'=>$request->end_date,
                     ]
                 );
-                return redirect()->back()->with('error',"Appartement reserved Successfully");
-
+                return redirect()->back()->with('success',"3zwaaaa ");
+            }
+        }else{
+            Reservation::create([
+                'appartement_id'=>$appartement_id,
+                'user_id'=>$user_id,
+                'date_debut'=>$request->start_date,
+                'date_fin'=>$request->end_date,
+                ]
+            );
+            return redirect()->back()->with('success',"3zwaaaa ");
         }
+        
+        
+
+
+        // dd ($lastreservation);
+        
 
        
         //  $last_start_reservation = $lastreservation->date_debut;
@@ -122,9 +155,8 @@ class ReservationController extends Controller
     public function show($id)
     {
         //
-        $reservation = Reservation::with('user')->find($id);
+        $reservation = Reservation::with('user','appartement')->find($id);
         // return $reservation ;
-
         return view('check_reservation', [
           'reservation'=> $reservation,
         ]);

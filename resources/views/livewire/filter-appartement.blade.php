@@ -52,7 +52,7 @@
                                   <option selected>Nombre de Personne</option> 
                                   @for($i=1;$i<=6;$i++)
                                   <option value="{{$i}}" >{{$i}}</option> 
-                                  @endfor;  
+                                  @endfor
         
                                 </select>
                               </div>
@@ -66,7 +66,7 @@
                                   <option selected>Nombre de Chambre</option> 
                                   @for($i=1;$i<=6;$i++)
                                   <option value="{{$i}}" >{{$i}}</option> 
-                                  @endfor;  
+                                  @endfor
                                 </select>
                               </div>
                             </div>
@@ -82,7 +82,7 @@
                 @foreach ($appartement->images as $image)
               <a href="{{route('propertie.show', $appartement->id)}}"><img src="{{asset('storage/image/'.$image->image)}}" class="card-img-top" > </a> 
               @break
-              @endforeach;
+              @endforeach
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold text-dark">{{$appartement->name}}</h5>
                 <p class="mb-2 items-center text-dark" ><i class="fa-solid fa-location-dot"></i>  {{$appartement->city->name}},{{$appartement->address}}</p>

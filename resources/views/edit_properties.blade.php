@@ -46,7 +46,8 @@
                                         <div class="col-md-4">                                         
                                             <div class="form-group">
                                                 <label>Properties Name</label>
-                                                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name_appartement"  value="{{$appartement->name}}">
+                                                <input class="form-control" type="text" name="name_appartement"  value="{{$appartement->name}}">
+                                                @error('name_appartement') <p class="text-danger">{{ $message }}</p> @enderror 
                                             </div>
                                         </div>
         
@@ -55,6 +56,7 @@
                                             <select class="form-select" aria-label="Default select example" name="city">
                                                 @foreach($cities as $city)
                                                   <option value="{{$city->id}}"{{in_array($city->id,$selectedCity) ? 'selected' : '' }}>{{$city->name}}</option>  
+                                                  @error('city') <p class="text-danger">{{ $message }}</p> @enderror 
                                                    
                                                   @endforeach;  
                                             </select>
@@ -67,6 +69,7 @@
                                             <div class="mb-3">
                                                 <label for="recipient-name" class="col-form-label">Adresse</label>
                                                 <input type="text" class="form-control" name="localisation" id="recipient-name" value="{{$appartement->address}}">
+                                                @error('localisation') <p class="text-danger">{{ $message }}</p> @enderror 
                                               </div>
                                         </div>
         
@@ -75,6 +78,7 @@
                                             <div class="mb-3">
                                                 <label for="message-text" class="col-form-label">Description </label>
                                                 <textarea class="form-control" rows="5" name="description" id="message-text">{{$appartement->description}}</textarea>
+                                                @error('description') <p class="text-danger">{{ $message }}</p> @enderror 
                                               </div>
                                         </div>
                                         <div class="col-md-4">
@@ -83,6 +87,7 @@
                                                 <div class="mb-3">
                                                     <label for="recipient-name" class="col-form-label">Image</label>
                                                     <input type="file" class="form-control" name="images[]" multiple id="recipient-name">
+                                                    @error('images') <p class="text-danger">{{ $message }}</p> @enderror 
                                                   </div>
                                             </div>
                                         </div>
@@ -90,6 +95,7 @@
                                             <div class="mb-3">
                                                 <label for="recipient-name" class="col-form-label">Prix</label>
                                                 <input type="number" class="form-control" name="prix" id="recipient-name" step="0.01" min="0" value="{{$appartement->prix}}">
+                                                @error('prix') <p class="text-danger">{{ $message }}</p> @enderror 
                                               </div>
                                         </div>
         
@@ -103,8 +109,7 @@
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" name="characteristics[]" value="{{$characteristic->id}}"
                                                     {{in_array($characteristic->id, $selectedCharacteristics) ? 'checked' : '' }}>
-                                                    {{-- {{$characteristic->name}} --}}
-                                                    {{-- {{dd($selectedCharacteristics)}} --}}
+                                                    @error('characteristics') <p class="text-danger">{{ $message }}</p> @enderror 
                                                     <label class="form-check-label" for="characteristic">{{$characteristic->name}}</label>
                                                 </div>
                                             @endforeach
@@ -116,6 +121,7 @@
                                                 @for($i=1;$i<=6;$i++)
                                                 <option value="{{$i}}" {{$i == $appartement->no_chambre? 'selected' : ''}}>{{$i}}</option>  
                                                 @endfor;  
+                                                @error('nombreChambre') <p class="text-danger">{{ $message }}</p> @enderror 
                                             </select>
                                           </div>
                                            
@@ -126,6 +132,7 @@
                                                 @for($i=1;$i<=6;$i++)
                                                 <option value="{{$i}}" {{$i == $appartement->person_nombre ? 'selected' : ''}}>{{$i}}</option>  
                                                 @endfor;  
+                                                @error('nombrePersonne') <p class="text-danger">{{ $message }}</p> @enderror 
                                             </select>
                                           </div>
 
@@ -142,6 +149,7 @@
                                                 <div class="mb-3">
                                                     <label for="recipient-name" class="col-form-label">Espaces</label>
                                                     <input type="text" class="form-control" value="{{$appartement->space}}" name="espaces" id="recipient-name">
+                                                    @error('espaces') <p class="text-danger">{{ $message }}</p> @enderror 
                                                 </div>
                                            </div>
 
@@ -149,6 +157,7 @@
                                             <div class="mb-3">
                                                 <label for="recipient-name" class="col-form-label">Date</label>
                                                 <input type="date" class="form-control" value="{{$appartement->date}}" name="date" id="recipient-name">
+                                                @error('date') <p class="text-danger">{{ $message }}</p> @enderror 
                                               </div>
                                        </div>
                                       
