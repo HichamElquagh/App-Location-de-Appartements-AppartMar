@@ -117,10 +117,10 @@
 
 
                     <div class="col-12">
-                        <div class="bg-light rounded  h-100 p-4">
+                        <div class="bg-light rounded  h-50 p-4">
                           <div class=" d-flex justify-content-start ">
                             <div><h6 class="mb-4">Properties Table</h6></div>                      
-                            </div>
+                          </div>
                             <div class="table-responsive">
                                 <table class="table  table-striped">
                                     <thead>
@@ -210,6 +210,37 @@
                                       @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="bg-light rounded  h-50 p-4">
+                          <div class=" d-flex justify-content-start ">
+                            <div><h6 class="mb-4">users</h6></div>                      
+                          </div>
+                          <table class="table  table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">UserName</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">phone</th>
+                                    <th scope="col">Change role </th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                    <th scope="row">1</th>
+                                    <td></td>
+                                    <td> <button type="submit" ><i class="fa-solid fa-pen-to-square"></i></button></td>
+                                    <form action="" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+                                        </form>
+                                         <td><button type="button"  onclick="remove_chara('')"  class="" data-bs-toggle="modal"  data-bs-target="#deletemodal" data-bs-whatever="@mdo"> <i class="fa-solid fa-trash"></i></button></td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Appartement\AppartementController;
 use App\Http\Controllers\Appartement\HomeController;
 use App\Http\Controllers\ElementAppartement\PersonController;
+use  App\Http\Controllers\User\UserController;
 use App\Http\Controllers\ElementAppartement\CharacteristicController ;
 use App\Http\Controllers\ElementAppartement\ReservationController;
 
@@ -71,11 +72,11 @@ Route::controller(CharacteristicController::class)->middleware((['auth']))->grou
     Route::get('/validate/{id}','validation_reservation')->name('validation_reservation');
 });
 
-// Route::controller(CharacteristicController::class)->middleware((['auth']))->group(function(){
-//     Route::post('/characteristicss','store')->name('characteristic.store');
-//     Route::get('/characteristics','index')->name('characteristic.index');
-//     Route::get('/characteristic/{id}','show')->name('characteristic');
-// });
+Route::controller(UserController::class)->middleware((['auth']))->group(function(){
+    Route::get('allusers','getUsers')->name('allusers.getUsers');
+    
+
+});
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
     Route::get('/','indexlanding')->name('home');

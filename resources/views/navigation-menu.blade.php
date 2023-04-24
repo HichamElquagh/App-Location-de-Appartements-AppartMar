@@ -23,6 +23,9 @@
                     <x-nav-link href="{{ route('characteristic.index') }}" :active="request()->routeIs('characteristic.index')">
                       {{ ('Characteristic') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('allusers.getUsers') }}" :active="request()->routeIs('characteristic.index')">
+                      {{ ('Users') }}
+                    </x-nav-link>
                   @endif
                     <x-nav-link href="{{route('home')}}" :active="request()->routeIs('/')">
                         {{ __('Home') }}
