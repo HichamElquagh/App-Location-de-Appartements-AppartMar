@@ -9,8 +9,6 @@ class Appartement extends Model
 {
   
 
-  public const Disponible = 'Disponible';
-  public const Loue = 'Loué';
 
 
     use HasFactory;
@@ -28,7 +26,6 @@ class Appartement extends Model
       'no_chambre',
       'prix',
       'date',
-      'status',
     ];
 
    

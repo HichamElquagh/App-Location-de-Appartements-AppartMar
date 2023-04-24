@@ -27,7 +27,6 @@ return new class extends Migration
             $table->integer('no_chambre');
             $table->float('prix');
             $table->date('date');
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

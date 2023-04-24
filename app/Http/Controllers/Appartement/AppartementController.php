@@ -64,7 +64,6 @@ class AppartementController extends Controller
         //
         // return "ok";
             $userId = Auth()->user()->id;
-            $status = Appartement::Disponible;
         
             $newAppartement = Appartement::create([
                 'user_id' => $userId,
@@ -77,7 +76,6 @@ class AppartementController extends Controller
                 'no_chambre' => $request->nombreChambre,
                 'prix' => $request->prix,
                 'date' => $request->date,
-                'status' => $status, 
             ]);
             $id = $newAppartement->id;
             // $images = [];
