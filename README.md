@@ -49,24 +49,24 @@ Une page qui permet aux utilisateurs de créer un compte ou de se connecter à u
 
 ### 3 Description fonctionnelle du Back-office :
 ### 3.1 Admin
-Gestion des logements : ajouter, modifier ou supprimer des logements avec les informations suivantes : localisation, prix, nombre de chambres, images,description, espace,.
- Gestion des réservations : visualiser les réservations en cours, annuler ou accepter des réservations.
- Gestion des utilisateurs : visualiser la liste des utilisateurs, ajouter ou supprimer des utilisateurs, gérer les droits d'accès des utilisateurs. 
-Génération de rapports : générer des rapports sur les statistiques de la plateforme (nombre de visites, nombre de réservations.).
-3.2 User
-Connexion à un espace personnel sécurisé.
-Gestion des logements : ajouter, modifier ou supprimer des logements avec les informations suivantes : localisation, prix, nombre de chambres, images,description, espace,nombre de personne, caracteristique de l’appartement ,
- Recherche de logements : rechercher des logements disponibles selon des critères spécifiques (localisation, nombre de chambres, prix,personnes). 
-Réservation de logements : réserver des logements en ligne,  
-Gestion Réservations : Gestion des réservation de ses propres appartements.  
+##### Gestion des logements : ajouter, modifier ou supprimer des logements avec les informations suivantes : localisation, prix, nombre de chambres, images,description, espace,.
+ ##### Gestion des réservations : visualiser les réservations en cours, annuler ou accepter des réservations.
+ ##### Gestion des utilisateurs : visualiser la liste des utilisateurs, ajouter ou supprimer des utilisateurs, gérer les droits d'accès des utilisateurs. 
+##### Génération de rapports : générer des rapports sur les statistiques de la plateforme (nombre de visites, nombre de réservations.).
+### 3.2 User
+##### Connexion à un espace personnel sécurisé.
+##### Gestion des logements : ajouter, modifier ou supprimer des logements avec les informations suivantes : localisation, prix, nombre de chambres, images,description, espace,nombre de personne, caracteristique de l’appartement ,
+#####  Recherche de logements : rechercher des logements disponibles selon des critères spécifiques (localisation, nombre de chambres, prix,personnes). 
+##### Réservation de logements : réserver des logements en ligne,  
+##### Gestion Réservations : Gestion des réservation de ses propres appartements.  
 
 
-3.3 les technologies utilisées :
+### 3.3 les technologies utilisées :
 ●    Front-End:
-Javascript
-Html
-Css/Bootstrap or tailwind  
+##### Javascript
+##### Html
+##### Css/Bootstrap or tailwind  
 ●    Back-End:
-PHP/Laravel
-MySQL for the database
+##### PHP/Laravel
+#### MySQL for the database
 
