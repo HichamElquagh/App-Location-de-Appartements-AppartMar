@@ -65,12 +65,14 @@ Une page qui permet aux utilisateurs de créer un compte ou de se connecter à u
 
 
 ### 3.3 les technologies utilisées :
-●    Front-End: Html5,  Css3 /Bootstrap , Javascript , Ajax 
+#####     Front-End: 
+● Html5,  Css3 /Bootstrap , Javascript , Ajax 
 ● Calendrier: librairie JS fullcalendar
-●    Back-End: PHP/Laravel
-● MySQL for the database
-● Auth:  package Jetstream
-● Role & Permission : Spatie 
+#####    Back-End:
+●  PHP/Laravel
+●  MySQL for the database
+●  Auth:  package Jetstream
+●  Role & Permission : Spatie 
 
 
 
