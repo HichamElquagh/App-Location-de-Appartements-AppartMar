@@ -2,6 +2,8 @@
 
 ## MarAppart
 
+
+
 ### 1. Présentation :
 
 un site spécialisé dans la location d'appartements au Maroc qui offrira aux consommateurs la possibilité de trouver des appartements à louer.
@@ -63,10 +65,16 @@ Une page qui permet aux utilisateurs de créer un compte ou de se connecter à u
 
 ### 3.3 les technologies utilisées :
 ●    Front-End:
-##### Javascript
-##### Html
-##### Css/Bootstrap or tailwind  
+##### Javascript , Ajax 
+##### Html5
+##### Css3 /Bootstrap 
+##### Calendrier: librairie JS fullcalendar
+
 ●    Back-End:
 ##### PHP/Laravel
 #### MySQL for the database
+#### Auth:  package Jetstream
+#### Role & Permission : Spatie 
+
+
 
