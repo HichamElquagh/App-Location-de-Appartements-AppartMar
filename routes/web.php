@@ -20,28 +20,15 @@ use App\Http\Controllers\ElementAppartement\ReservationController;
 */
 
 
-// Route::get('/', function () {
-//     return view('landing');
-// });
-// Route::get('/dashboard', function () {
-//     return view('mydashboard');
-// })->name('dashboard');
 
 Route::get('/contact', function () {
     return view('contact');
 });
-// Route::get('/All.properties', function () {
-//     return view('All_Properties');
-// });
+
 Route::get('/a_propos', function () {
     return view('a_propos');
 });
-// Route::get('/test', function () {
-//     return view('dashboard');
-// });
-// Route::get('/properties', function () {
-//     return view('properties');
-// });
+
 
 
 Route::middleware([
@@ -80,7 +67,7 @@ Route::controller(UserController::class)->middleware((['auth']))->group(function
 Route::controller(HomeController::class)->group(function(){
     Route::get('/allproperties','index')->name('allproperties.index');
     Route::get('/','indexlanding')->name('home');
-    Route::get('/propertiesssss/{id}','show')->name('propertie.show');
+    Route::get('/showPropertie/{id}','show')->name('propertie.show');
     Route::post('/filter','filterAppartement')->name('filterAppartement');
 });
 

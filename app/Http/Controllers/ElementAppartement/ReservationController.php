@@ -20,8 +20,10 @@ class ReservationController extends Controller
     {
         // 
         // return Auth()->user();
+        // return 'cc';
             if( Auth()->user()->can('view all reservation')){
-                $reservation = Reservation::with('appartement','user');
+                $reservation = Reservation::with('appartement','user')->get();
+                // return $reservation;
                 return view('reservation' , ['reservations'=>$reservation] );
             }
             else {
@@ -76,7 +78,7 @@ class ReservationController extends Controller
             ->first();
             // return $overlap;
             if($overlap){
-                return redirect()->back()->with('error',"reserve blasa");
+                return redirect()->back()->with('error'," appartement hase been reserverd between{{$request->start_date}} and {{$request->end_date}}");
             }else{
                 Reservation::create([
                     'appartement_id'=>$appartement_id,
@@ -85,7 +87,7 @@ class ReservationController extends Controller
                     'date_fin'=>$request->end_date,
                     ]
                 );
-                return redirect()->back()->with('success',"3zwaaaa ");
+                return redirect()->back()->with('success',"Appartement reserved successfully");
             }
         }else{
             Reservation::create([
@@ -95,56 +97,21 @@ class ReservationController extends Controller
                 'date_fin'=>$request->end_date,
                 ]
             );
-            return redirect()->back()->with('success',"3zwaaaa ");
+            return redirect()->back()->with('success',"Appartement reserved successfully");
+        }
+      
         }
         
         
 
 
-        // dd ($lastreservation);
-        
 
-       
-        //  $last_start_reservation = $lastreservation->date_debut;
-        //  $last_end_reservation = $lastreservation->date_fin;
-         
-        // $user_id = Auth()->user()->id;
-        // $appartement_id = $id;
-        // $lastreservation =  Reservation::where('appartement_id', $id)
-        // ->where('status', 0)
-        // ->orderBy('date_fin', 'desc')
-        // ->first();
-        
-       
-        //  $last_start_reservation = $lastreservation->date_debut;
-        //  $last_end_reservation = $lastreservation->date_fin;
-     
-
-        //   dd($lastreservation); 
-
-            
-
-            // if(  ){
-
-            //     Reservation::create([
-            //         'appartement_id'=>$appartement_id,
-            //         'user_id'=>$user_id,
-            //         'date_debut'=>$request->start_date,
-            //         'date_fin'=>$request->end_date,
-            //         ]
-            //     );
-            // }
-    //  $appartement = Appartement::find($id);
-    //  $appartement->update([
-    //     'status' => 'Loué',
-    // ]);
-
-       return redirect()->back()->with('success','Appartement reserved successfully');
+    //    return redirect()->back()->with('success','Appartement reserved successfully');
 
 
         
 
-    }
+    
 
     /**
      * Display the specified resource.

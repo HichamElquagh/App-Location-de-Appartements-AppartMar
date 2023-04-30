@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Appartement;
-
+use App\Models\User;
+use App\Models\Reservation;
 use App\Models\Appartement;
 use App\Models\Image;
 use App\Models\Characteristic;
@@ -24,6 +25,12 @@ class AppartementController extends Controller
     public function index()
     {
         //
+        $StatisticUser = User::count();
+        $StatisticAppartement = Appartement::count();
+        // $StatisticReservation = Reservation::count()->where('status', 1);
+        $allReservations = Reservation::count();
+        $ConfirmedReservations = Reservation::where('status', 1)->count();
+        // return $allReservations;
         $allcities = Citie::all();
         $allcharacteristic = Characteristic::get();
         $user= Auth()->user();
@@ -39,6 +46,11 @@ class AppartementController extends Controller
             'characteristics' => $allcharacteristic,
             'cities'=>$allcities,
             'appartements'=>$allapartemnt,
+            'users' => $StatisticUser,
+            'allreservations' =>  $allReservations,
+            'confirmedreservations' =>  $ConfirmedReservations,
+            'allappartement' =>  $StatisticAppartement,
+
         ]);
     
     }
@@ -246,4 +258,6 @@ class AppartementController extends Controller
             return redirect()->route('dashboard')->with('success','Appartement has been deleted successfully');
         }
     }
+
+
 }

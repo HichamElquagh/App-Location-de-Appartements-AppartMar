@@ -14,7 +14,7 @@
           <div class=" d-flex justify-content-end ">
             <div class=""><button type="button" class=" proper-btn btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add properites</button></div>
         </div>
-                    
+        @if(Auth::user()->hasRole('admin'))
                       <!-- statistique card -->
                       <div class="body-stats">
                         <div class="main-content">
@@ -28,8 +28,8 @@
                                       <div class="card-body">
                                         <div class="row">
                                           <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                                            <span class="h2 font-weight-bold mb-0">350,897</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">All propreties</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{$allappartement}}</span>
                                           </div>
                                           <div class="col-auto">
                                             <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -49,8 +49,8 @@
                                       <div class="card-body">
                                         <div class="row">
                                           <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                            <span class="h2 font-weight-bold mb-0">2,356</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{$users}}</span>
                                           </div>
                                           <div class="col-auto">
                                             <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -70,8 +70,8 @@
                                       <div class="card-body">
                                         <div class="row">
                                           <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                            <span class="h2 font-weight-bold mb-0">924</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Reservation</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{$allreservations}}</span>
                                           </div>
                                           <div class="col-auto">
                                             <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -91,8 +91,8 @@
                                       <div class="card-body">
                                         <div class="row">
                                           <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Confirmed Reservation</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{$confirmedreservations}}</span>
                                           </div>
                                           <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -114,7 +114,7 @@
                         </div>
                       </div>
                       <!--  -->
-
+                      @endif
 
                     <div class="col-12">
                         <div class="bg-light rounded  h-50 p-4">
@@ -212,38 +212,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="bg-light rounded  h-50 p-4">
-                          <div class=" d-flex justify-content-start ">
-                            <div><h6 class="mb-4">users</h6></div>                      
-                          </div>
-                          <table class="table  table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">UserName</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">phone</th>
-                                    <th scope="col">Change role </th>
-                                    <th scope="col">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                    <th scope="row">1</th>
-                                    <td></td>
-                                    <td> <button type="submit" ><i class="fa-solid fa-pen-to-square"></i></button></td>
-                                    <form action="" method="POST">
-                                         @csrf
-                                         @method('DELETE')
-                                        </form>
-                                         <td><button type="button"  onclick="remove_chara('')"  class="" data-bs-toggle="modal"  data-bs-target="#deletemodal" data-bs-whatever="@mdo"> <i class="fa-solid fa-trash"></i></button></td>
-                                </tr>
-                              
-                            </tbody>
-                        </table>
-                            </div>
-                        </div>
-                    </div>
+                        
 
                     <!-- second table  -->
              

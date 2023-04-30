@@ -30,7 +30,7 @@ events: [
       end: '{{$reservation->date_fin}}',
       url:'{{route("checkreservation",$reservation->id)}}',
       className: '{{$reservation->status == 1 ? "bg-success" : ( $reservation->status == 2 ? "bg-danger" : "" )}}',
-      
+        
     }, 
   @endforeach
   ],
